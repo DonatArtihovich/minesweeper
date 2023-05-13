@@ -3,7 +3,10 @@ export class Cell {
         this.isBomb = isBomb;
         this.neighbors = getNeighborCells(y, x, matrix);
         this.value = (isBomb) ? '💣' : this.getCellValue(y, x);
-        console.log(matrix)
+        this.x = x;
+        this.y = y;
+        this.matrix = matrix;
+        this.appendToField();
     }
 
     getCellValue() {
@@ -15,6 +18,55 @@ export class Cell {
         })
 
         return (count) ? count : '';
+    }
+
+    appendToField() {
+        const field = document.querySelector('.main-field');
+        const templateCell = document.createElement('div');
+        templateCell.classList.add('main-field__cell');
+
+
+        const curCell = templateCell.cloneNode();
+        field.append(curCell);
+        this.cellElem = curCell;
+
+        curCell.addEventListener('click', () => {
+            this.openCell(curCell);
+        })
+
+        curCell.addEventListener('contextmenu', e => {
+            e.preventDefault();
+            this.makeFlag();
+        })
+    }
+
+    openCell(curCell) {
+        if (this.hasFlag) {
+            this.cellElem.innerText = '';
+            this.hasFlag = false;
+            return
+        }
+
+        if (this.isOpened) return;
+        this.isOpened = true;
+        curCell.classList.add('main-field__cell_opened');
+
+        if (!this.value) {
+            const neighborCells = getNeighborCells(this.y, this.x, this.matrix);
+            neighborCells.forEach(c => {
+                if (!c.isOpened) c.openCell(c.cellElem);
+            })
+
+        } else if (typeof this.value === 'number' || this.isBomb) {
+            curCell.innerText = this.value;
+
+            if (this.isBomb) endGame(this.matrix);
+        }
+    }
+
+    makeFlag() {
+        this.cellElem.innerText = '🚩';
+        this.hasFlag = true;
     }
 }
 

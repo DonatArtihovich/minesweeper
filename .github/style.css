@@ -16,3 +16,7 @@
     font-size: 50px;
     text-align: center;
 }
+
+.main-field__cell_opened {
+    background-color: red;
+}

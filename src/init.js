@@ -6,5 +6,4 @@ export function initGame() {
 
     document.body.append(gameField);
     startGame()
-    console.log('!')
 }

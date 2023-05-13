@@ -1,7 +1,5 @@
 import { createMatrix } from './matrix.js';
-import createGameField from './field.js';
 
 export function startGame() {
     createMatrix();
-    createGameField();
 }
