@@ -1,22 +1,101 @@
+:root {
+    --cell-closed: #567d2e;
+    --bomb-opened: #e07102;
+    --cell-opened: #733709;
+    --one-color: #55CEFF;
+    --two-color: #55C233;
+    --three-color: #d40000;
+    --four-color: #00008B;
+    --five-color: brown;
+    --six-color: turquoise;
+    --seven-color: black;
+    --eight-color: white;
+}
+
+body {
+    background: url(./src/assets/forest.jpg);
+}
+
 .main-field {
     margin: auto;
-    width: 600px;
-    height: 600px;
+    width: 500px;
+    height: 500px;
     border: 1px solid black;
     display: flex;
     flex-wrap: wrap;
+    border-radius: 10px;
+    overflow: hidden;
 }
 
 .main-field__cell {
     box-sizing: border-box;
     width: 10%;
     height: 10%;
-    border: 1px solid black;
-    background-color: lightgray;
+    /* border-radius: 10px; */
+    border: 1px solid var(--cell-closed);
+    background: url(./src/assets/grass.jpg);
     font-size: 50px;
-    text-align: center;
+    font-family: Arial;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-field__cell:hover {
+    cursor: pointer;
 }
 
 .main-field__cell_opened {
-    background-color: red;
+    background: url(./src/assets/earth.jpg);
+    border-color: var(--cell-opened);
+}
+
+.main-field__cell_opened:hover {
+    cursor: default;
+}
+
+.main-field__bomb_opened {
+    background: url(./src/assets/explosion.jpg);
+    border-color: var(--bomb-opened);
+}
+
+.main-field__cell_1 {
+    color: var(--one-color);
+}
+
+.main-field__cell_2 {
+    color: var(--two-color);
+}
+
+.main-field__cell_3 {
+    color: var(--three-color);
+}
+
+.main-field__cell_4 {
+    color: var(--four-color);
+}
+
+.main-field__cell_5 {
+    color: var(--five-color);
+}
+
+.main-field__cell_6 {
+    color: var(--six-color);
+}
+
+.main-field__cell_7 {
+    color: var(--seven-color);
+}
+
+.main-field__cell_8 {
+    color: var(--eight-color);
+}
+
+.menu-field {
+    margin: 0 auto 25px;
+    width: 800px;
+    height: 150px;
+    border-radius: 20px;
+    border: 1px solid var(--cell-closed);
+    background-color: #55C233;
 }

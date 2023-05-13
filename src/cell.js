@@ -1,3 +1,5 @@
+export let turnsCount = 0;
+
 export class Cell {
     constructor(isBomb, y, x, matrix) {
         this.isBomb = isBomb;
@@ -27,6 +29,7 @@ export class Cell {
 
 
         const curCell = templateCell.cloneNode();
+        if (typeof this.value === 'number') curCell.classList.add(`main-field__cell_${this.value}`);
         field.append(curCell);
         this.cellElem = curCell;
 
@@ -49,9 +52,9 @@ export class Cell {
 
         if (this.isOpened) return;
         this.isOpened = true;
-        curCell.classList.add('main-field__cell_opened');
 
         if (!this.value) {
+            curCell.classList.add('main-field__cell_opened');
             const neighborCells = getNeighborCells(this.y, this.x, this.matrix);
             neighborCells.forEach(c => {
                 if (!c.isOpened) c.openCell(c.cellElem);
@@ -59,12 +62,14 @@ export class Cell {
 
         } else if (typeof this.value === 'number' || this.isBomb) {
             curCell.innerText = this.value;
-
+            !this.isBomb ? curCell.classList.add('main-field__cell_opened') :
+                curCell.classList.add('main-field__bomb_opened')
             if (this.isBomb) endGame(this.matrix);
         }
     }
 
     makeFlag() {
+        if (this.isOpened) return
         this.cellElem.innerText = '🚩';
         this.hasFlag = true;
     }
@@ -83,7 +88,7 @@ function getNeighborCells(y, x, matrix) {
 function endGame(matrix) {
     matrix.forEach(matrixRow => {
         matrixRow.forEach(cell => {
-            if (cell.isBomb) cell.openCell(cell.cellElem);
+            if (cell.isBomb && !cell.hasFlag) cell.openCell(cell.cellElem);
         })
     })
 }
