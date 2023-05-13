@@ -31,10 +31,9 @@ body {
     box-sizing: border-box;
     width: 10%;
     height: 10%;
-    /* border-radius: 10px; */
     border: 1px solid var(--cell-closed);
     background: url(./src/assets/grass.jpg);
-    font-size: 50px;
+    font-size: 40px;
     font-family: Arial;
     display: flex;
     align-items: center;
