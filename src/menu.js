@@ -19,12 +19,12 @@ export default function createMenu() {
 
 function createCount() {
     const turnsFieldCount = document.createElement('p');
-    turnsFieldCount.innerText = `turns: ${turnsCount}`;
+    turnsFieldCount.innerText = `Turns: ${turnsCount}`;
     turnsFieldCount.classList.add('menu-field__turns-count');
 
     const mainField = document.querySelector('.main-field');
     mainField.addEventListener('click', e => {
-        if (!e.target.classList.contains('main-field__cell') || e.target.classList.contains('main-field__cell_opened')) return;
+        if (!e.target.classList.contains('main-field__cell') || e.target.classList.contains('main-field__cell_opened') || e.target.textContent === '🚩') return;
         turnsCount++
         const turnsFieldCount = document.querySelector('.menu-field__turns-count');
         turnsFieldCount.innerText = `Turns: ${turnsCount}`;
