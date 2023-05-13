@@ -1,5 +1,4 @@
 import { startGame } from './start.js';
-import { turnsCount } from './cell.js';
 import createMenu from './menu.js';
 
 export function initGame() {
