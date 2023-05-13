@@ -25,6 +25,7 @@ body {
     flex-wrap: wrap;
     border-radius: 10px;
     overflow: hidden;
+    user-select: none;
 }
 
 .main-field__cell {
