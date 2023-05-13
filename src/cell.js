@@ -1,5 +1,3 @@
-export let turnsCount = 0;
-
 export class Cell {
     constructor(isBomb, y, x, matrix) {
         this.isBomb = isBomb;
@@ -26,7 +24,6 @@ export class Cell {
         const field = document.querySelector('.main-field');
         const templateCell = document.createElement('div');
         templateCell.classList.add('main-field__cell');
-
 
         const curCell = templateCell.cloneNode();
         if (typeof this.value === 'number') curCell.classList.add(`main-field__cell_${this.value}`);

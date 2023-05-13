@@ -3,24 +3,23 @@ import { startGame } from './start.js';
 let turnsCount = 0;
 
 export default function createMenu() {
-    const menuField = document.createElement('div');
-    menuField.classList.add('menu-field');
+    const menuField = createElem('div', 'menu-field');
+
+    const menuHeader = createElem('h1', 'menu-field__header', 'Minesweeper');
 
     const turnsFieldCount = createCount();
 
-    const restartButton = document.createElement('button');
-    restartButton.textContent = 'Start Game!';
+    const restartButton = createElem('button', 'menu-field__restart-button', 'Start Game!');
     restartButton.addEventListener('click', restartGame);
-    restartButton.classList.add('menu-field__restart-button');
 
-    menuField.append(turnsFieldCount, restartButton);
+    const fieldTimer = createElem('p', 'menu-field__timer');
+
+    menuField.append(menuHeader, turnsFieldCount, fieldTimer, restartButton);
     document.body.prepend(menuField);
 }
 
 function createCount() {
-    const turnsFieldCount = document.createElement('p');
-    turnsFieldCount.innerText = `Turns: ${turnsCount}`;
-    turnsFieldCount.classList.add('menu-field__turns-count');
+    const turnsFieldCount = createElem('p', 'menu-field__turns-count', `Turns: ${turnsCount}`);
 
     const mainField = document.querySelector('.main-field');
     mainField.addEventListener('click', e => {
@@ -40,4 +39,12 @@ function restartGame() {
     const gameField = document.querySelector('.main-field');
     gameField.innerHTML = '';
     startGame()
+}
+
+function createElem(name, className, content) {
+    const elem = document.createElement(name);
+    elem.classList.add(className);
+    if (content) elem.textContent = content;
+
+    return elem
 }
