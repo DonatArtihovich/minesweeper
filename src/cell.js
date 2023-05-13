@@ -79,3 +79,11 @@ function getNeighborCells(y, x, matrix) {
     }
     return out
 }
+
+function endGame(matrix) {
+    matrix.forEach(matrixRow => {
+        matrixRow.forEach(cell => {
+            if (cell.isBomb) cell.openCell(cell.cellElem);
+        })
+    })
+}
