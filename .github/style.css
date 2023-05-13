@@ -1,0 +1,18 @@
+.main-field {
+    margin: auto;
+    width: 60vw;
+    height: 60vw;
+    border: 1px solid black;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.main-field__cell {
+    box-sizing: border-box;
+    width: 6vw;
+    height: 6vw;
+    border: 1px solid black;
+    background-color: lightgray;
+    font-size: 50px;
+    text-align: center;
+}
