@@ -25,6 +25,4 @@ export function createField(w = 10, h = 10, count = 10) {
         data.elem = c
         if (typeof data.value === 'number') c.classList.add(`main-field__cell_${data.value}`);
     })
-
-    console.log(matrix);
 }
