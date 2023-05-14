@@ -8,6 +8,9 @@ let intervalID;
 export default function createMenu() {
     const menuField = createElem('div', 'menu-field');
 
+    const menuWrapper = createElem('div', 'menu-field__btns-wrapper');
+    const headerWrapper = createElem('div', 'menu-field__header-wrapper');
+
     const menuHeader = createElem('h1', 'menu-field__header', 'Minesweeper');
 
     const turnsFieldCount = createCount();
@@ -17,7 +20,9 @@ export default function createMenu() {
 
     const fieldTimer = createElem('p', 'menu-field__timer');
 
-    menuField.append(menuHeader, turnsFieldCount, fieldTimer, restartButton);
+    headerWrapper.append(menuHeader);
+    menuWrapper.append(turnsFieldCount, fieldTimer, restartButton);
+    menuField.append(headerWrapper, menuWrapper);
     document.body.prepend(menuField);
 }
 

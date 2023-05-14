@@ -48,6 +48,7 @@ export class Cell {
         curCell.addEventListener('contextmenu', e => {
             e.preventDefault();
             this.makeFlag();
+            checkStatus(this.matrix);
         })
     }
 
