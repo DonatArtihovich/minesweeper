@@ -10,6 +10,11 @@
     --six-color: turquoise;
     --seven-color: black;
     --eight-color: white;
+    --modal-background: url(./src/assets/bark.jpg);
+    --modal-border: rgb(119, 45, 20);
+    --modal-text: rgb(53, 227, 14);
+    --modal-text-wrapper: url(./src/assets/leaf.jpg);
+    --modal-button-background: rgb(183, 77, 20);
 }
 
 body {
@@ -98,4 +103,64 @@ body {
     border-radius: 20px;
     border: 1px solid var(--cell-closed);
     background-color: #55C233;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(41, 41, 41, 0.6);
+}
+
+.game-over-modal {
+    width: 30%;
+    height: 80%;
+    margin: 5% auto;
+    background: var(--modal-background);
+    background-repeat: no-repeat;
+    background-size: 200%;
+    border: 5px solid var(--modal-border);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.game-over-modal__alert-wrapper {
+    width: 400px;
+    text-align: center;
+    border: 3px solid var(--cell-closed);
+    background: var(--modal-text-wrapper);
+    border-radius: 10px;
+}
+
+.game-over-modal__alert {
+    font-family: Arial;
+    font-size: 30px;
+    color: var(--two-color);
+}
+
+.game-over-modal__button {
+    width: 300px;
+    height: 90px;
+    background-color: var(--modal-button-background);
+    border: 3px solid var(--modal-border);
+    border-radius: 10px;
+    font-family: Arial;
+    font-size: 30px;
+    color: var(--cell-opened);
+}
+
+.game-over-modal__button:hover {
+    background-color: var(--cell-opened);
+    color: var(--modal-button-text);
+    cursor: pointer;
+}
+
+.game-over-modal__button:active {
+    background-color: var(--modal-button-background);
+    color: var(--cell-opened);
 }

@@ -1,5 +1,5 @@
 import { startGame } from './start.js';
-
+import createElem from './element.js';
 let turnsCount = 0;
 
 export default function createMenu() {
@@ -39,12 +39,4 @@ function restartGame() {
     const gameField = document.querySelector('.main-field');
     gameField.innerHTML = '';
     startGame()
-}
-
-function createElem(name, className, content) {
-    const elem = document.createElement(name);
-    elem.classList.add(className);
-    if (content) elem.textContent = content;
-
-    return elem
 }

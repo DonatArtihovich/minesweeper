@@ -1,3 +1,8 @@
+import createElem from './element.js';
+import { openModal } from './modal.js';
+
+let isGameOver = false;
+
 export class Cell {
     constructor(isBomb, y, x, matrix) {
         this.isBomb = isBomb;
@@ -6,6 +11,7 @@ export class Cell {
         this.x = x;
         this.y = y;
         this.matrix = matrix;
+        isGameOver = false;
         this.appendToField();
     }
 
@@ -22,8 +28,7 @@ export class Cell {
 
     appendToField() {
         const field = document.querySelector('.main-field');
-        const templateCell = document.createElement('div');
-        templateCell.classList.add('main-field__cell');
+        const templateCell = createElem('div', 'main-field__cell');
 
         const curCell = templateCell.cloneNode();
         if (typeof this.value === 'number') curCell.classList.add(`main-field__cell_${this.value}`);
@@ -32,6 +37,7 @@ export class Cell {
 
         curCell.addEventListener('click', () => {
             this.openCell(curCell);
+            if (this.isBomb) endGame(this.matrix);
         })
 
         curCell.addEventListener('contextmenu', e => {
@@ -47,7 +53,7 @@ export class Cell {
             return
         }
 
-        if (this.isOpened) return;
+        if (this.isOpened || isGameOver) return;
         this.isOpened = true;
 
         if (!this.value) {
@@ -61,7 +67,6 @@ export class Cell {
             curCell.innerText = this.value;
             !this.isBomb ? curCell.classList.add('main-field__cell_opened') :
                 curCell.classList.add('main-field__bomb_opened')
-            if (this.isBomb) endGame(this.matrix);
         }
     }
 
@@ -86,6 +91,10 @@ function endGame(matrix) {
     matrix.forEach(matrixRow => {
         matrixRow.forEach(cell => {
             if (cell.isBomb && !cell.hasFlag) cell.openCell(cell.cellElem);
+            cell.cellElem.addEventListener('click', openModal), { caption: true };
         })
     })
+
+    isGameOver = true;
+    openModal()
 }
