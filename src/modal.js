@@ -1,5 +1,5 @@
 import createElem from './element.js';
-import { turnsCount, curTime } from './menu.js';
+import { turnsCount, curTime, restartGame } from './menu.js';
 
 export function openModal(boolean) {
     setTimeout(() => {
@@ -46,5 +46,8 @@ function createWinModal() {
 
 function closeModal() {
     const modal = document.querySelector('.modal-overlay');
-    setTimeout(() => { modal.remove() }, 90);
+    setTimeout(() => {
+        modal.remove();
+        restartGame();
+    }, 90);
 }

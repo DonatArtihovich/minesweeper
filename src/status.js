@@ -28,9 +28,6 @@ export function endGame() {
             }
 
             stopTimer()
-
-            curElem.addEventListener('click', () => { openModal() }), { caption: true };
-            curElem.addEventListener('contextmenu', () => { openModal() }), { caption: true };
         })
     })
     openModal(false)

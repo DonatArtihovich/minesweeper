@@ -39,13 +39,11 @@ function createCount() {
     return turnsFieldCount
 }
 
-function restartGame() {
+export function restartGame() {
     turnsCount = 0;
     const turnsFieldCount = document.querySelector('.menu-field__turns-count');
-    turnsFieldCount.innerText = `Turns: ${turnsCount}`;
+    turnsFieldCount.textContent = `Turns: ${turnsCount}`;
 
-    const gameField = document.querySelector('.main-field');
-    gameField.innerHTML = '';
     startGame()
 }
 
