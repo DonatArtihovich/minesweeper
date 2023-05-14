@@ -201,6 +201,7 @@ body {
 }
 
 .menu-field__restart-button {
+    padding: 5px 10px;
     background-color: var(--modal-button-background);
     border: 3px solid var(--modal-border);
     border-radius: 10px;
@@ -221,9 +222,13 @@ body {
 
 
 .menu-field__timer {
+    font-size: 20px;
+    font-family: Arial;
     color: var(--menu-text-color);
 }
 
 .menu-field__turns-count {
+    font-size: 20px;
+    font-family: Arial;
     color: var(--menu-text-color);
 }

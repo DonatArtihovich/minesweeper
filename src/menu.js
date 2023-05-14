@@ -15,7 +15,7 @@ export default function createMenu() {
 
     const turnsFieldCount = createCount();
 
-    const restartButton = createElem('button', 'menu-field__restart-button', 'Start Game!');
+    const restartButton = createElem('button', 'menu-field__restart-button', 'Play');
     restartButton.addEventListener('click', restartGame);
 
     const fieldTimer = createElem('p', 'menu-field__timer');
