@@ -1,5 +1,6 @@
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 
 module.exports = {
     entry: './src/index.js',
@@ -14,6 +15,11 @@ module.exports = {
         filename: 'bundle.js'
     },
     plugins: [
-        new HtmlWebpackPlugin()
+        new HtmlWebpackPlugin({
+            title: 'Minesweeper',
+        }),
+        new FaviconsWebpackPlugin({
+            logo: './src/assets/icon.png',
+        })
     ]
 }
