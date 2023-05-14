@@ -34,7 +34,7 @@ export function openCell(cell) {
     } else if (cellData.isBomb) {
 
         const b = checkFirstTurnBomb();
-        console.log(b)
+
         if (!b) {
             cell.textContent = cellData.value;
             cell.classList.add('main-field__bomb_opened');
@@ -53,6 +53,7 @@ export function openCell(cell) {
 export function flagSell(event, cell) {
     event.preventDefault()
     const cellData = getCellData(cell);
+    console.log(cellData)
 
     if (cellData.isOpened) return
     cell.textContent = '🚩';
