@@ -5,6 +5,7 @@ export function getCellData(cell) {
     const cellIndex = cell.dataset.index;
     const y = Math.floor(cellIndex / matrixWidth);
     const x = cellIndex % matrixWidth;
+
     const cellData = gameMatrix[y][x];
 
     return cellData

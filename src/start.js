@@ -9,10 +9,13 @@ export function startGame(w, h, count) {
 }
 
 function addCellListeners() {
-    const cellsArr = document.querySelectorAll('.main-field__cell');
+    const gameField = document.querySelector('.main-field');
 
-    cellsArr.forEach(c => {
-        c.addEventListener('click', () => openCell(c));
-        c.addEventListener('contextmenu', event => flagSell(event, c));
-    })
+    gameField.addEventListener('click', event => {
+        if (event.target.classList.contains('main-field__cell')) openCell(event.target)
+    });
+    gameField.addEventListener('contextmenu', event => {
+        if (event.target.classList.contains('main-field__cell')) flagSell(event, event.target);
+    }
+    );
 }

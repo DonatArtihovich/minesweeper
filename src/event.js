@@ -1,6 +1,7 @@
+import { gameMatrix } from './matrix.js';
 import { getCellData, getCellNeighbors } from './cell-data.js';
 import { checkStatus, endGame } from './status.js';
-// import { redrawField } from './redraw.js';
+import { createField } from './field.js';
 
 let isGameOver = false;
 
@@ -32,17 +33,19 @@ export function openCell(cell) {
         cell.classList.add('main-field__cell_opened');
     } else if (cellData.isBomb) {
 
-        // const b = checkFirstTurnBomb();
-        // if (!b) {
-        cell.textContent = cellData.value;
-        cell.classList.add('main-field__bomb_opened');
-        endGame()
-        // } else {
-        // redrawField();
-        // openCell(cell);
-        // }
+        const b = checkFirstTurnBomb();
+        console.log(b)
+        if (!b) {
+            cell.textContent = cellData.value;
+            cell.classList.add('main-field__bomb_opened');
+            endGame()
+        } else {
+            createField()
+            const index = (gameMatrix[0].length * cellData.y) + cellData.x;
+            const curElem = document.querySelector(`[data-index="${index}"]`);
+            openCell(curElem);
+        }
     }
-
 
     checkStatus()
 }
@@ -58,12 +61,13 @@ export function flagSell(event, cell) {
     checkStatus()
 }
 
-// function checkFirstTurnBomb() {
-//     gameMatrix.forEach(matrixRow => {
-//         matrixRow.forEach(cell => {
-//             if (cell.isOpened && !cell.isBomb) return
-//         })
-//     })
+function checkFirstTurnBomb() {
+    let check = true;
+    gameMatrix.forEach(matrixRow => {
+        matrixRow.forEach(cell => {
+            if (cell.isOpened && !cell.isBomb) check = false
+        })
+    })
 
-//     return true
-// }
+    return check
+}

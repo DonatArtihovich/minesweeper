@@ -5,6 +5,8 @@ import { getCellData } from './cell-data.js';
 export function createField(w = 10, h = 10, count = 10) {
     const cellsCount = w * h;
     const field = document.querySelector('.main-field');
+    field.innerHTML = '';
+
     const templateCell = createElem('div', 'main-field__cell');
 
     for (let i = 0; i < cellsCount; i++) {
