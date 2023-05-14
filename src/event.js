@@ -53,7 +53,6 @@ export function openCell(cell) {
 export function flagSell(event, cell) {
     event.preventDefault()
     const cellData = getCellData(cell);
-    console.log(cellData)
 
     if (cellData.isOpened) return
     cell.textContent = '🚩';
