@@ -14,7 +14,7 @@ export function createField(w = 10, h = 10, count = 10) {
         field.append(curCell);
     }
 
-    const matrix = createMatrix(w, h, count);
+    createMatrix(w, h, count);
 
     const cellsArr = document.querySelectorAll('.main-field__cell');
 
