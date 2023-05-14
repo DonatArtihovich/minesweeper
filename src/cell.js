@@ -1,5 +1,6 @@
 import createElem from './element.js';
 import { openModal } from './modal.js';
+import { turnsCount, curTime } from './menu.js';
 
 let isGameOver = false;
 
@@ -36,8 +37,12 @@ export class Cell {
         this.cellElem = curCell;
 
         curCell.addEventListener('click', () => {
+            if (this.isBomb && !this.hasFlag || isGameOver) {
+                endGame(this.matrix);
+                return
+            }
             this.openCell(curCell);
-            if (this.isBomb) endGame(this.matrix);
+            checkStatus(this.matrix);
         })
 
         curCell.addEventListener('contextmenu', e => {
@@ -87,6 +92,21 @@ function getNeighborCells(y, x, matrix) {
     return out
 }
 
+
+
+function checkStatus(matrix) {
+    let check = true;
+    matrix.forEach(matrixLine => {
+        matrixLine.forEach(item => {
+            if ((!item.isOpened && !item.hasFlag) || (item.hasFlag && !item.isBomb)) {
+                check = false;
+                return
+            }
+        })
+    })
+    if (check) winGame()
+}
+
 function endGame(matrix) {
     matrix.forEach(matrixRow => {
         matrixRow.forEach(cell => {
@@ -96,5 +116,9 @@ function endGame(matrix) {
     })
 
     isGameOver = true;
-    openModal()
+    openModal(false)
+}
+
+function winGame() {
+    openModal(true, { turnsCount, curTime });
 }

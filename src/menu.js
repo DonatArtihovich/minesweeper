@@ -1,6 +1,9 @@
 import { startGame } from './start.js';
 import createElem from './element.js';
-let turnsCount = 0;
+
+export let turnsCount = 0;
+export let curTime = 0;
+let intervalID;
 
 export default function createMenu() {
     const menuField = createElem('div', 'menu-field');
@@ -39,4 +42,19 @@ function restartGame() {
     const gameField = document.querySelector('.main-field');
     gameField.innerHTML = '';
     startGame()
+}
+
+export function startTimer() {
+    const fieldTimer = document.querySelector('.menu-field__timer');
+    fieldTimer.textContent = 'Time: 00';
+    curTime = 0;
+
+    clearInterval(intervalID);
+
+    intervalID = setInterval(() => {
+        curTime++;
+
+        const timeContent = (curTime > 9) ? curTime : '0' + `${curTime}`;
+        fieldTimer.textContent = 'Time: ' + timeContent;
+    }, 1000)
 }

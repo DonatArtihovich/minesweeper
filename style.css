@@ -114,7 +114,7 @@ body {
     background-color: rgba(41, 41, 41, 0.6);
 }
 
-.game-over-modal {
+.game-modal {
     width: 30%;
     height: 80%;
     margin: 5% auto;
@@ -129,7 +129,7 @@ body {
     justify-content: space-evenly;
 }
 
-.game-over-modal__alert-wrapper {
+.game-modal__alert-wrapper {
     width: 400px;
     text-align: center;
     border: 3px solid var(--cell-closed);
@@ -137,13 +137,13 @@ body {
     border-radius: 10px;
 }
 
-.game-over-modal__alert {
+.game-modal__alert {
     font-family: Arial;
     font-size: 30px;
     color: var(--two-color);
 }
 
-.game-over-modal__button {
+.game-modal__button {
     width: 300px;
     height: 90px;
     background-color: var(--modal-button-background);
@@ -154,13 +154,13 @@ body {
     color: var(--cell-opened);
 }
 
-.game-over-modal__button:hover {
+.game-modal__button:hover {
     background-color: var(--cell-opened);
     color: var(--modal-button-text);
     cursor: pointer;
 }
 
-.game-over-modal__button:active {
+.game-modal__button:active {
     background-color: var(--modal-button-background);
     color: var(--cell-opened);
 }
