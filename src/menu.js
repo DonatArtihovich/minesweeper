@@ -63,3 +63,7 @@ export function startTimer() {
         fieldTimer.textContent = 'Time: ' + timeContent;
     }, 1000)
 }
+
+export function stopTimer() {
+    clearInterval(intervalID);
+}

@@ -10,6 +10,8 @@ export function createMatrix(width = 10, height = 10, bombsCount = 10) {
     gameMatrix.forEach((matrixRow, y) => {
         matrixRow.forEach((cell, x) => gameMatrix[y][x] = new Cell(!!cell, y, x, gameMatrix))
     })
+
+    return gameMatrix
 }
 
 function addBombs(bombsCount, w, h) {

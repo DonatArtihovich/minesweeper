@@ -1,9 +1,10 @@
 import createElem from './element.js';
+import { turnsCount, curTime } from './menu.js';
 
-export function openModal(boolean, values) {
+export function openModal(boolean) {
     setTimeout(() => {
         if (boolean) {
-            createWinModal(values)
+            createWinModal()
         } else {
             createEndModal()
         }
@@ -26,19 +27,13 @@ function createEndModal() {
     document.body.append(modalOverlay);
 }
 
-function closeModal() {
-    const modal = document.querySelector('.modal-overlay');
-    setTimeout(() => { modal.remove() }, 90);
-}
-
-function createWinModal(values) {
-    if (!values) return
+function createWinModal() {
 
     const modalOverlay = createElem('div', 'modal-overlay');
     const modal = createElem('div', 'game-modal');
 
     const modalAlertWrapper = createElem('div', 'game-modal__alert-wrapper');
-    const modalAlert = createElem('p', 'game-modal__alert', `Hooray! You found all mines in ${values.curTime} seconds and ${values.turnsCount} moves!`);
+    const modalAlert = createElem('p', 'game-modal__alert', `Hooray! You found all mines in ${curTime} seconds and ${turnsCount} moves!`);
     modalAlertWrapper.append(modalAlert);
 
     const tryAgainButton = createElem('button', 'game-modal__button', 'Play again');
@@ -47,4 +42,9 @@ function createWinModal(values) {
     modal.append(modalAlertWrapper, tryAgainButton);
     modalOverlay.append(modal);
     document.body.append(modalOverlay);
+}
+
+function closeModal() {
+    const modal = document.querySelector('.modal-overlay');
+    setTimeout(() => { modal.remove() }, 90);
 }
