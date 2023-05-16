@@ -55,10 +55,10 @@ export function openCell(cell) {
 
 export function flagSell(event, cell) {
     event.preventDefault();
-    changeFlagCount(true);
     const cellData = getCellData(cell);
 
-    if (cellData.isOpened) return
+    if (cellData.isOpened || cellData.hasFlag) return
+    changeFlagCount(true);
     cell.textContent = '🚩';
     cellData.hasFlag = true;
 
