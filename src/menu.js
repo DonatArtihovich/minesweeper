@@ -1,5 +1,6 @@
 import { startGame } from './start.js';
 import createElem from './element.js';
+import { bombCount } from './field.js';
 
 export let turnsCount = 0;
 export let curTime = 0;
@@ -18,16 +19,19 @@ export default function createMenu() {
     const restartButton = createElem('button', 'menu-field__restart-button', 'Play');
     restartButton.addEventListener('click', restartGame);
 
-    const fieldTimer = createElem('p', 'menu-field__timer');
+    const fieldTimer = createElem('p', 'menu-field__timer menu-counter');
+
+    const bombFieldCount = createElem('p', 'menu-field__bomb-count menu-counter');
+    const flagFieldCount = createElem('p', 'menu-field__flag-count menu-counter');
 
     headerWrapper.append(menuHeader);
-    menuWrapper.append(turnsFieldCount, fieldTimer, restartButton);
+    menuWrapper.append(turnsFieldCount, fieldTimer, bombFieldCount, flagFieldCount, restartButton);
     menuField.append(headerWrapper, menuWrapper);
     document.body.prepend(menuField);
 }
 
 function createCount() {
-    const turnsFieldCount = createElem('p', 'menu-field__turns-count', `Turns: ${turnsCount}`);
+    const turnsFieldCount = createElem('p', 'menu-field__turns-count menu-counter', `Turns: ${turnsCount}`);
 
     const mainField = document.querySelector('.main-field');
     mainField.addEventListener('click', e => {

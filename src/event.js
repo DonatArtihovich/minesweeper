@@ -2,8 +2,9 @@ import { gameMatrix } from './matrix.js';
 import { getCellData, getCellNeighbors } from './cell-data.js';
 import { checkStatus, endGame } from './status.js';
 import { createField } from './field.js';
+import { changeBombCount } from './field.js';
 
-let isGameOver = false;
+export let flagCount = 0;
 
 export function openCell(cell) {
 
@@ -12,10 +13,12 @@ export function openCell(cell) {
     if (cellData.hasFlag) {
         cell.textContent = '';
         cellData.hasFlag = false;
+        if (cellData.isBomb) changeBombCount(true);
+        changeFlagCount();
         return
     }
 
-    if (cellData.isOpened || isGameOver) return;
+    if (cellData.isOpened) return;
 
     cellData.isOpened = true;
 
@@ -51,13 +54,15 @@ export function openCell(cell) {
 }
 
 export function flagSell(event, cell) {
-    event.preventDefault()
+    event.preventDefault();
+    changeFlagCount(true);
     const cellData = getCellData(cell);
 
     if (cellData.isOpened) return
     cell.textContent = '🚩';
     cellData.hasFlag = true;
 
+    if (cellData.isBomb) changeBombCount()
     checkStatus()
 }
 
@@ -70,4 +75,11 @@ function checkFirstTurnBomb() {
     })
 
     return check
+}
+
+export function changeFlagCount(b, clear) {
+    b ? flagCount++ : flagCount--;
+    if (clear) flagCount = 0;
+    const flagCountElement = document.querySelector('.menu-field__flag-count');
+    flagCountElement.textContent = `Flags: ${flagCount}`;
 }
