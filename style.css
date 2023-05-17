@@ -184,6 +184,7 @@ body {
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-around;
+    gap: 5px;
 }
 
 .menu-field__header-wrapper {
@@ -202,6 +203,7 @@ body {
 }
 
 .menu-field__button {
+    margin-top: 10px;
     padding: 5px 10px;
     background-color: var(--header-color);
     border: 3px solid var(--cell-closed);
@@ -224,8 +226,8 @@ body {
     color: var(--button-text-active-color);
 }
 
-
 .menu-counter {
+    margin: 10px 0 0;
     font-size: 20px;
     font-family: Arial;
     color: var(--menu-text-color);
@@ -235,4 +237,24 @@ body {
     background-color: var(--modal-border);
     border: 3px solid var(--three-color);
     color: var(--three-color);
+}
+
+.size-toggler {
+    margin: 0 0 10px;
+    width: 100px;
+    padding: 5px 10px;
+    background-color: var(--header-color);
+    border: 3px solid var(--cell-closed);
+    border-radius: 10px;
+    font-family: Arial;
+    font-size: 20px;
+    color: var(--cell-closed);
+}
+
+.size-toggler:hover {
+    cursor: pointer;
+}
+
+.size-toggler__option:hover {
+    cursor: pointer;
 }
