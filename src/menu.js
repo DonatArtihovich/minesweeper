@@ -1,6 +1,7 @@
 import { startGame } from './start.js';
 import createElem from './element.js';
 import { toggleSound } from './sound.js';
+import { resizeField } from './resize.js';
 
 export let turnsCount = 0;
 export let curTime = 0;
@@ -27,8 +28,10 @@ export default function createMenu() {
     const soundToggler = createElem('button', 'menu-field__sound-button menu-field__button', 'Sound: on');
     soundToggler.addEventListener('click', toggleSound);
 
+    const sizeToggler = createSizeToggler();
+
     headerWrapper.append(menuHeader);
-    menuWrapper.append(turnsFieldCount, fieldTimer, bombFieldCount, flagFieldCount, restartButton, soundToggler);
+    menuWrapper.append(turnsFieldCount, fieldTimer, bombFieldCount, flagFieldCount, restartButton, soundToggler, sizeToggler);
     menuField.append(headerWrapper, menuWrapper);
     document.body.prepend(menuField);
 }
@@ -44,6 +47,22 @@ function createCount() {
         turnsFieldCount.innerText = `Turns: ${turnsCount}`;
     }, { capture: true });
     return turnsFieldCount
+}
+
+function createSizeToggler() {
+    const sizeToggler = createElem('select', 'size-toggler');
+    const easyOption = createElem('option', 'size-toggler__option', 'Easy');
+    easyOption.dataset.level = 'easy';
+    const mediumOption = createElem('option', 'size-toggler__option', 'Medium');
+    mediumOption.dataset.level = 'medium';
+    const hardOption = createElem('option', 'size-toggler__option', 'Hard');
+    hardOption.dataset.level = 'hard';
+
+    sizeToggler.append(easyOption, mediumOption, hardOption);
+
+    sizeToggler.addEventListener('change', () => resizeField())
+
+    return sizeToggler
 }
 
 export function restartGame() {
