@@ -64,10 +64,10 @@ export function openCell(cell) {
 export function flagSell(event, cell) {
     event.preventDefault();
 
-    playSound('flag');
     const cellData = getCellData(cell);
 
     if (cellData.isOpened || cellData.hasFlag) return
+    playSound('flag');
     changeFlagCount(true);
     cell.textContent = '🚩';
     cellData.hasFlag = true;

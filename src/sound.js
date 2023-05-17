@@ -21,6 +21,7 @@ export function playSound(sound) {
             bombSound.play();
             break;
         case 'flag':
+            flagSound.currentTime = 0;
             flagSound.play();
             break;
         case 'win':
