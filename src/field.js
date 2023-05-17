@@ -29,8 +29,8 @@ export function createField(w = curWidth, h = curHeight, count = curBombCount) {
         field.append(curRow);
     }
 
-    createMatrix(w, h, count);
-
+    const matrix = createMatrix(w, h, count);
+    console.log(matrix)
     const cellsArr = document.querySelectorAll('.main-field__cell');
 
     cellsArr.forEach((c, i) => {

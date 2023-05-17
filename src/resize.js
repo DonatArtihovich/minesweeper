@@ -28,18 +28,25 @@ export function resizeField() {
     const level = sizeToggler.children[sizeOptionIndex].dataset.level;
 
     curSize = sizesObj[level];
+    let levelBombCount;
 
     switch (level) {
         case 'easy':
-            startGame(10, 10, 10);
+            levelBombCount = 10;
+            startGame(10, 10, levelBombCount);
             break;
         case 'medium':
-            startGame(15, 15, 20);
+            levelBombCount = 20;
+            startGame(15, 15, levelBombCount);
             break;
         case 'hard':
-            startGame(25, 25, 60);
+            levelBombCount = 60;
+            startGame(25, 25, levelBombCount);
             break;
     }
+
+    const countToggler = document.querySelector('.count-toggler');
+    countToggler.selectedIndex = levelBombCount - 10;
 }
 
 export function changeBombCount() {
