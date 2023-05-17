@@ -3,16 +3,17 @@ import { getCellData, getCellNeighbors } from './cell-data.js';
 import { checkStatus, endGame } from './status.js';
 import { createField } from './field.js';
 import { changeBombCount } from './field.js';
+import { playSound } from './sound.js';
 
 export let flagCount = 0;
 
 export function openCell(cell) {
-
     const cellData = getCellData(cell);
 
     if (cellData.hasFlag) {
         cell.textContent = '';
         cellData.hasFlag = false;
+
         if (cellData.isBomb) changeBombCount(true);
         changeFlagCount();
         return
@@ -23,6 +24,8 @@ export function openCell(cell) {
     cellData.isOpened = true;
 
     if (!cellData.value) {
+        playSound('cell');
+
         cell.classList.add('main-field__cell_opened');
 
         const neighborCells = getCellNeighbors(cellData.y, cellData.x);
@@ -31,6 +34,7 @@ export function openCell(cell) {
         })
 
     } else if (typeof cellData.value === 'number') {
+        playSound('cell')
 
         cell.textContent = cellData.value;
         cell.classList.add('main-field__cell_opened');
@@ -39,6 +43,8 @@ export function openCell(cell) {
         const b = checkFirstTurnBomb();
 
         if (!b) {
+            playSound('bomb');
+
             cell.textContent = cellData.value;
             cell.classList.add('main-field__bomb_opened');
             endGame()
@@ -55,6 +61,8 @@ export function openCell(cell) {
 
 export function flagSell(event, cell) {
     event.preventDefault();
+
+    playSound('flag');
     const cellData = getCellData(cell);
 
     if (cellData.isOpened || cellData.hasFlag) return

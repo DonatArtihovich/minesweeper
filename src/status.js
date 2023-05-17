@@ -1,7 +1,7 @@
 import { gameMatrix } from './matrix.js';
 import { openModal } from './modal.js';
 import { stopTimer } from './menu.js';
-
+import { playSound } from './sound.js';
 
 export function checkStatus() {
     let check = true;
@@ -13,11 +13,14 @@ export function checkStatus() {
             }
         })
     })
+
     if (check) winGame()
 }
 
 export function endGame() {
+
     gameMatrix.forEach((matrixRow, y) => {
+
         matrixRow.forEach((cell, x) => {
             const index = (gameMatrix[0].length * y) + x;
             const curElem = document.querySelector(`[data-index="${index}"]`);
@@ -34,6 +37,7 @@ export function endGame() {
 }
 
 function winGame() {
+    playSound('win');
     stopTimer()
     openModal(true);
 }

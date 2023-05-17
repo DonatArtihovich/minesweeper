@@ -200,19 +200,22 @@ body {
     color: var(--header-color);
 }
 
-.menu-field__restart-button {
+.menu-field__button {
     padding: 5px 10px;
-    background-color: var(--modal-button-background);
-    border: 3px solid var(--modal-border);
+    background-color: var(--header-color);
+    border: 3px solid var(--cell-closed);
     border-radius: 10px;
     font-family: Arial;
     font-size: 20px;
-    color: var(--button-text-color);
+    color: var(--cell-closed);
+}
+
+.menu-field__button:hover {
+    cursor: pointer;
 }
 
 .menu-field__restart-button:hover {
     background-color: var(--cell-opened);
-    cursor: pointer;
 }
 
 .menu-field__restart-button:active {
@@ -225,4 +228,10 @@ body {
     font-size: 20px;
     font-family: Arial;
     color: var(--menu-text-color);
+}
+
+.sound-off {
+    background-color: var(--modal-border);
+    border: 3px solid var(--three-color);
+    color: var(--three-color);
 }
