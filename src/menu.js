@@ -1,7 +1,7 @@
 import { startGame } from './start.js';
 import createElem from './element.js';
 import { toggleSound } from './sound.js';
-import { resizeField } from './resize.js';
+import { resizeField, changeBombCount } from './resize.js';
 
 export let turnsCount = 0;
 export let curTime = 0;
@@ -28,10 +28,18 @@ export default function createMenu() {
     const soundToggler = createElem('button', 'menu-field__sound-button menu-field__button', 'Sound: on');
     soundToggler.addEventListener('click', toggleSound);
 
+    const sizeTogglerWrapper = createElem('div', 'size-toggler__wrapper');
     const sizeToggler = createSizeToggler();
+    const sizeTogglerHeader = createElem('span', 'menu-counter', 'Difficulty: ');
+    sizeTogglerWrapper.append(sizeTogglerHeader, sizeToggler);
+
+    const countTogglerWrapper = createElem('div', 'count-toggler__wrapper');
+    const countToggler = createBombCountToggler();
+    const countTogglerHeader = createElem('span', 'menu-counter', 'Bombs: ');
+    countTogglerWrapper.append(countTogglerHeader, countToggler);
 
     headerWrapper.append(menuHeader);
-    menuWrapper.append(turnsFieldCount, fieldTimer, bombFieldCount, flagFieldCount, restartButton, soundToggler, sizeToggler);
+    menuWrapper.append(turnsFieldCount, fieldTimer, bombFieldCount, flagFieldCount, restartButton, soundToggler, sizeTogglerWrapper, countTogglerWrapper);
     menuField.append(headerWrapper, menuWrapper);
     document.body.prepend(menuField);
 }
@@ -50,10 +58,10 @@ function createCount() {
 }
 
 function createSizeToggler() {
-    const sizeToggler = createElem('select', 'size-toggler');
+    const sizeToggler = createElem('select', 'size-toggler toggler');
     const easyOption = createElem('option', 'size-toggler__option', 'Easy');
     easyOption.dataset.level = 'easy';
-    const mediumOption = createElem('option', 'size-toggler__option', 'Medium');
+    const mediumOption = createElem('option', 'size-toggler__option toggler__option', 'Medium');
     mediumOption.dataset.level = 'medium';
     const hardOption = createElem('option', 'size-toggler__option', 'Hard');
     hardOption.dataset.level = 'hard';
@@ -63,6 +71,22 @@ function createSizeToggler() {
     sizeToggler.addEventListener('change', () => resizeField())
 
     return sizeToggler
+}
+
+function createBombCountToggler() {
+    const countToggler = createElem('select', 'count-toggler toggler');
+    const templateOption = createElem('option', 'count-toggler__option toggler__option');
+
+    for (let i = 10; i <= 99; i++) {
+        const curOption = templateOption.cloneNode();
+        curOption.textContent = i;
+        curOption.dataset.count = i;
+        countToggler.append(curOption);
+    }
+
+    countToggler.addEventListener('change', () => changeBombCount());
+
+    return countToggler
 }
 
 export function restartGame() {

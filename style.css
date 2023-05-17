@@ -239,7 +239,7 @@ body {
     color: var(--three-color);
 }
 
-.size-toggler {
+.toggler {
     margin: 0 0 10px;
     width: 100px;
     padding: 5px 10px;
@@ -251,10 +251,6 @@ body {
     color: var(--cell-closed);
 }
 
-.size-toggler:hover {
-    cursor: pointer;
-}
-
-.size-toggler__option:hover {
+.toggler:hover {
     cursor: pointer;
 }

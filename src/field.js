@@ -10,7 +10,6 @@ let curHeight = 10;
 let curBombCount = 10;
 
 export function createField(w = curWidth, h = curHeight, count = curBombCount) {
-    console.log('field: ', w, h, count);
     if (curWidth !== w) curWidth = w;
     if (curHeight !== h) curHeight = h;
     if (curBombCount !== count) curBombCount = count;

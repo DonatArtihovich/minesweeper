@@ -31,13 +31,21 @@ export function resizeField() {
 
     switch (level) {
         case 'easy':
-            startGame(10, 10);
+            startGame(10, 10, 10);
             break;
         case 'medium':
-            startGame(15, 15);
+            startGame(15, 15, 20);
             break;
         case 'hard':
-            startGame(25, 25);
+            startGame(25, 25, 60);
             break;
     }
+}
+
+export function changeBombCount() {
+    const countToggler = document.querySelector('.count-toggler');
+    const countOptionIndex = countToggler.selectedIndex;
+    const count = countToggler.children[countOptionIndex].dataset.count;
+
+    startGame(undefined, undefined, count);
 }
