@@ -11,6 +11,8 @@ export function openCell(cell) {
     const cellData = getCellData(cell);
 
     if (cellData.hasFlag) {
+        playSound('flag');
+
         cell.textContent = '';
         cellData.hasFlag = false;
 
