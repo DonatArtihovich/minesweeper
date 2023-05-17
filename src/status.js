@@ -8,7 +8,7 @@ export function checkStatus() {
 
     gameMatrix.forEach(matrixLine => {
         matrixLine.forEach(item => {
-            if ((!item.isOpened && !item.hasFlag) || (item.hasFlag && !item.isBomb) || (item.isBomb && item.isOpened)) {
+            if ((!item.isOpened && !item.isBomb) || (item.hasFlag && !item.isBomb) || (item.isBomb && item.isOpened)) {
                 check = false;
             }
         })
