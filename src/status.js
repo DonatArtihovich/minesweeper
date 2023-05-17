@@ -37,6 +37,7 @@ export function endGame() {
 }
 
 function winGame() {
+    if (document.querySelector('.game-modal')) return
     playSound('win');
     stopTimer()
     openModal(true);
