@@ -10,14 +10,14 @@
     --six-color: turquoise;
     --seven-color: black;
     --eight-color: white;
-    --modal-background: url(./src/assets/bark.jpg);
+    --modal-background: url(./src/assets/images/bark.jpg);
     --modal-border: rgb(119, 45, 20);
     --modal-text: rgb(53, 227, 14);
-    --modal-text-background: url(./src/assets/leaf.jpg);
+    --modal-text-background: url(./src/assets/images/leaf.jpg);
     --modal-button-background: rgb(183, 77, 20);
-    --menu-background: url(./src/assets/menu-bark.jpg);
+    --menu-background: url(./src/assets/images/menu-bark.jpg);
     --header-color: #55C233;
-    --menu-btns-background: url(./src/assets/wood.jpg);
+    --menu-btns-background: url(./src/assets/images/wood.jpg);
     --button-text-color: black;
     --menu-text-color: #462105;
     --button-text-active-color: #532705;
@@ -25,7 +25,7 @@
 }
 
 body {
-    background: url(./src/assets/forest.jpg);
+    background: url(./src/assets/images/forest.jpg);
 }
 
 .main-field {
@@ -45,7 +45,7 @@ body {
     width: 10%;
     height: 10%;
     border: 1px solid var(--cell-closed);
-    background: url(./src/assets/grass.jpg);
+    background: url(./src/assets/images/grass.jpg);
     font-size: 40px;
     font-family: Arial;
     display: flex;
@@ -58,7 +58,7 @@ body {
 }
 
 .main-field__cell_opened {
-    background: url(./src/assets/earth.jpg);
+    background: url(./src/assets/images/earth.jpg);
     border-color: var(--cell-opened);
 }
 
@@ -67,7 +67,7 @@ body {
 }
 
 .main-field__bomb_opened {
-    background: url(./src/assets/explosion.jpg);
+    background: url(./src/assets/images/explosion.jpg);
     border-color: var(--bomb-opened);
 }
 
