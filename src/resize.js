@@ -21,12 +21,14 @@ const sizesObj = {
 }
 
 export let curSize = sizesObj['easy'];
+export let curDifficulty = 'easy';
 
 export function resizeField() {
     const sizeToggler = document.querySelector('.size-toggler');
     const sizeOptionIndex = sizeToggler.selectedIndex;
     const level = sizeToggler.children[sizeOptionIndex].dataset.level;
 
+    curDifficulty = level;
     curSize = sizesObj[level];
     let levelBombCount;
 

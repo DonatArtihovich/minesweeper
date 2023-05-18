@@ -7,7 +7,7 @@ import { curSize } from './resize';
 export let bombCount = 0;
 let curWidth = 10;
 let curHeight = 10;
-let curBombCount = 10;
+export let curBombCount = 10;
 
 export function createField(w = curWidth, h = curHeight, count = curBombCount) {
     if (curWidth !== w) curWidth = w;

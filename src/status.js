@@ -2,6 +2,11 @@ import { gameMatrix } from './matrix.js';
 import { openModal } from './modal.js';
 import { stopTimer } from './menu.js';
 import { playSound } from './sound.js';
+import { turnsCount, curTime } from './menu.js';
+import { setScore } from './score.js';
+import { curDifficulty } from './resize.js';
+import { curBombCount } from './field.js';
+
 
 export function checkStatus() {
     let check = true;
@@ -33,12 +38,14 @@ export function endGame() {
             stopTimer()
         })
     })
-    openModal(false)
+    openModal(false);
+    setScore('Loss', curTime, turnsCount, curDifficulty, curBombCount);
 }
 
 function winGame() {
-    if (document.querySelector('.game-modal')) return
+    if (!!document.querySelector('.game-modal')) return
     playSound('win');
     stopTimer()
     openModal(true);
+    setScore('Win', curTime, turnsCount, curDifficulty, curBombCount);
 }

@@ -2,6 +2,7 @@ import { startGame } from './start.js';
 import createElem from './element.js';
 import { toggleSound } from './sound.js';
 import { resizeField, changeBombCount } from './resize.js';
+import { openScoreModal } from './modal.js';
 
 export let turnsCount = 0;
 export let curTime = 0;
@@ -28,18 +29,22 @@ export default function createMenu() {
     const soundToggler = createElem('button', 'menu-field__sound-button menu-field__button', 'Sound: on');
     soundToggler.addEventListener('click', toggleSound);
 
-    const sizeTogglerWrapper = createElem('div', 'size-toggler__wrapper');
+    const sizeTogglerWrapper = createElem('div', 'size-toggler__wrapper toggler__wrapper');
     const sizeToggler = createSizeToggler();
     const sizeTogglerHeader = createElem('span', 'menu-counter', 'Difficulty: ');
     sizeTogglerWrapper.append(sizeTogglerHeader, sizeToggler);
 
-    const countTogglerWrapper = createElem('div', 'count-toggler__wrapper');
+    const countTogglerWrapper = createElem('div', 'count-toggler__wrapper toggler__wrapper');
     const countToggler = createBombCountToggler();
     const countTogglerHeader = createElem('span', 'menu-counter', 'Bombs: ');
     countTogglerWrapper.append(countTogglerHeader, countToggler);
 
+    const scoreButton = createElem('button', 'menu-field__score-button menu-field__button', 'Score');
+    scoreButton.addEventListener('click', openScoreModal);
+
     headerWrapper.append(menuHeader);
-    menuWrapper.append(turnsFieldCount, fieldTimer, bombFieldCount, flagFieldCount, restartButton, soundToggler, sizeTogglerWrapper, countTogglerWrapper);
+    menuWrapper.append(turnsFieldCount, fieldTimer, bombFieldCount, flagFieldCount,
+        restartButton, soundToggler, sizeTogglerWrapper, countTogglerWrapper, scoreButton);
     menuField.append(headerWrapper, menuWrapper);
     document.body.prepend(menuField);
 }

@@ -127,7 +127,7 @@ body {
     justify-content: space-evenly;
 }
 
-.game-modal__alert-wrapper {
+.game-modal__header-wrapper {
     width: 400px;
     text-align: center;
     border: 3px solid var(--cell-closed);
@@ -135,7 +135,7 @@ body {
     border-radius: 10px;
 }
 
-.game-modal__alert {
+.game-modal__header {
     font-family: Arial;
     font-size: 30px;
     color: var(--header-color);
@@ -175,6 +175,7 @@ body {
 
 .menu-field__btns-wrapper {
     margin: auto;
+    padding: 10px 0;
     width: 600px;
     background: var(--menu-btns-background);
     background-size: 100%;
@@ -215,10 +216,11 @@ body {
 
 .menu-field__button:hover {
     cursor: pointer;
+    background-color: var(--cell-opened);
 }
 
-.menu-field__restart-button:hover {
-    background-color: var(--cell-opened);
+.menu-field__sound-button:hover {
+    background-color: var(--header-color);
 }
 
 .menu-field__restart-button:active {
@@ -239,8 +241,13 @@ body {
     color: var(--three-color);
 }
 
+.toggler__wrapper {
+    margin: 0;
+    height: auto;
+}
+
 .toggler {
-    margin: 0 0 10px;
+    margin: 0;
     width: 100px;
     padding: 5px 10px;
     background-color: var(--header-color);
@@ -253,4 +260,51 @@ body {
 
 .toggler:hover {
     cursor: pointer;
+}
+
+.game-modal__close-button {
+    height: 50px;
+    width: 50px;
+    margin-right: 20px;
+    align-self: flex-end;
+    background-color: var(--three-color);
+    border: 3px solid var(--modal-border);
+    border-radius: 50px;
+    color: var(--modal-border);
+    font-size: 30px;
+}
+
+.game-modal__close-button:hover {
+    cursor: pointer;
+    background-color: var(--modal-border);
+    border: 3px solid var(--three-color);
+    color: var(--three-color);
+}
+
+.score-table {
+    width: 400px;
+    height: 400px;
+    background-color: var(--header-color);
+    border: 3px solid var(--cell-closed);
+    border-radius: 10px;
+}
+
+.score-table__row {
+    border: 2px solid var(--cell-closed);
+}
+
+.score-table__header-cell {
+    text-align: center;
+    font-size: 20px;
+    color: var(--cell-closed);
+}
+
+.score-table__cell {
+    text-align: center;
+    font-size: 20px;
+    color: var(--cell-closed);
+}
+
+.menu-field__score-button {
+    margin: 0 0 2px;
 }
