@@ -55,7 +55,7 @@ export function createField(w = curWidth, h = curHeight, count = curBombCount) {
 export function changeBombCount(b) {
     if (!bombCount) return;
     b ? bombCount++ : bombCount--;
-    const bombCountElement = document.querySelector('.menu-field__bomb-count');
+    const bombCountElement = document.querySelector('.menu-field__bomb-counter');
     bombCountElement.textContent = `Bombs: ${bombCount}`;
 }
 
