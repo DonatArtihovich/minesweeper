@@ -22,12 +22,17 @@ const sizesObj = {
 
 export let curSize = sizesObj['easy'];
 export let curDifficulty = 'easy';
+export let curDifficultyIndex = 0;
 
-export function resizeField() {
+export function resizeField(newLevel) {
+    const localStorage = window.localStorage;
+    if (localStorage.getItem('game')) localStorage.removeItem('game');
+
     const sizeToggler = document.querySelector('.size-toggler');
     const sizeOptionIndex = sizeToggler.selectedIndex;
-    const level = sizeToggler.children[sizeOptionIndex].dataset.level;
+    const level = newLevel || sizeToggler.children[sizeOptionIndex].dataset.level;
 
+    curDifficultyIndex = sizeOptionIndex;
     curDifficulty = level;
     curSize = sizesObj[level];
     let levelBombCount;

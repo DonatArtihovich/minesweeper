@@ -3,6 +3,7 @@ import { createMatrix } from './matrix';
 import { getCellData } from './cell-data';
 import { changeFlagCount } from './event';
 import { curSize } from './resize';
+import { rebuildField } from './save';
 
 export let bombCount = 0;
 let curWidth = 10;
@@ -29,23 +30,26 @@ export function createField(w = curWidth, h = curHeight, count = curBombCount) {
         field.append(curRow);
     }
 
-    const matrix = createMatrix(w, h, count);
-    console.log(matrix)
     const cellsArr = document.querySelectorAll('.main-field__cell');
 
     cellsArr.forEach((c, i) => {
         c.dataset.index = i;
+    })
 
+    const localStorage = window.localStorage;
+    localStorage.getItem('game') ? rebuildField() : createMatrix(w, h, count);
+
+    cellsArr.forEach(c => {
         const data = getCellData(c);
-        data.elem = c
+        data.elem = c;
         if (typeof data.value === 'number') c.classList.add(`main-field__cell_${data.value}`);
     })
 
-    const bombCountElement = document.querySelector('.menu-field__bomb-count');
+    const bombCountElement = document.querySelector('.menu-field__bomb-counter');
     bombCountElement.textContent = `Bombs: ${bombCount}`;
     changeFlagCount(false, true);
 
-    changeSizes()
+    changeSizes();
 }
 
 export function changeBombCount(b) {
@@ -55,7 +59,7 @@ export function changeBombCount(b) {
     bombCountElement.textContent = `Bombs: ${bombCount}`;
 }
 
-function changeSizes() {
+export function changeSizes() {
     const fieldContainer = document.querySelector('.main-field');
     const fieldCells = document.querySelectorAll('.main-field__cell');
 

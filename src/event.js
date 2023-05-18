@@ -31,12 +31,13 @@ export function openCell(cell) {
         cell.classList.add('main-field__cell_opened');
 
         const neighborCells = getCellNeighbors(cellData.y, cellData.x);
+
         neighborCells.forEach(c => {
             if (!c.isOpened) openCell(c.elem);
         })
 
     } else if (typeof cellData.value === 'number') {
-        playSound('cell')
+        playSound('cell');
 
         cell.textContent = cellData.value;
         cell.classList.add('main-field__cell_opened');
@@ -61,13 +62,13 @@ export function openCell(cell) {
     checkStatus()
 }
 
-export function flagSell(event, cell) {
-    event.preventDefault();
+export function flagCell(event, cell, isRebuild) {
+    if (event) event.preventDefault();
 
     const cellData = getCellData(cell);
 
     if (cellData.isOpened || cellData.hasFlag) return
-    playSound('flag');
+    if (!isRebuild) playSound('flag');
     changeFlagCount(true);
     cell.textContent = '🚩';
     cellData.hasFlag = true;
@@ -90,6 +91,6 @@ function checkFirstTurnBomb() {
 export function changeFlagCount(b, clear) {
     b ? flagCount++ : flagCount--;
     if (clear) flagCount = 0;
-    const flagCountElement = document.querySelector('.menu-field__flag-count');
+    const flagCountElement = document.querySelector('.menu-field__flag-counter');
     flagCountElement.textContent = `Flags: ${flagCount}`;
 }

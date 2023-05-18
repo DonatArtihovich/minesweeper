@@ -8,7 +8,7 @@ export function createMatrix(width = 10, height = 10, bombsCount = 10) {
     addBombs(bombsCount, width, height);
 
     gameMatrix.forEach((matrixRow, y) => {
-        matrixRow.forEach((cell, x) => gameMatrix[y][x] = new Cell(!!cell, y, x, gameMatrix))
+        matrixRow.forEach((cell, x) => gameMatrix[y][x] = new Cell(!!cell, y, x))
     })
 
     return gameMatrix
@@ -32,4 +32,8 @@ function addBombs(bombsCount, w, h) {
 
 function generateRandom(min, max) {
     return Math.floor(Math.random() * (max - min) + min);
+}
+
+export function setMatrix(matrix) {
+    gameMatrix = matrix;
 }

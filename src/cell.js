@@ -1,10 +1,9 @@
 import { getCellNeighbors } from './cell-data.js';
 
 export class Cell {
-    constructor(isBomb, y, x, matrix) {
+    constructor(isBomb, y, x) {
         this.isBomb = isBomb;
         this.value = (isBomb) ? '💣' : this.getCellValue(y, x);
-        this.matrix = matrix;
         this.y = y;
         this.x = x;
     }

@@ -219,13 +219,18 @@ body {
     background-color: var(--cell-opened);
 }
 
+.menu-field__button:active {
+    background-color: var(--button-active-color);
+    color: var(--button-text-active-color);
+}
+
 .menu-field__sound-button:hover {
     background-color: var(--header-color);
 }
 
-.menu-field__restart-button:active {
-    background-color: var(--button-active-color);
-    color: var(--button-text-active-color);
+.menu-field__sound-button:active {
+    background-color: var(--header-color);
+    color: var(--cell-closed);
 }
 
 .menu-counter {
@@ -238,6 +243,15 @@ body {
 .sound-off {
     background-color: var(--modal-border);
     border: 3px solid var(--three-color);
+    color: var(--three-color);
+}
+
+.sound-off:hover {
+    background-color: var(--modal-border);
+}
+
+.sound-off:active {
+    background-color: var(--modal-border);
     color: var(--three-color);
 }
 
@@ -305,6 +319,6 @@ body {
     color: var(--cell-closed);
 }
 
-.menu-field__score-button {
+.menu-field__bottom-button {
     margin: 0 0 2px;
 }

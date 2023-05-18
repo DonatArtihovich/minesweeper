@@ -30,10 +30,12 @@ export function playSound(sound) {
     }
 }
 
-export function toggleSound() {
-    soundOn = !soundOn;
+export function handleSoundButton() {
+    toggleSound()
     const soundToggler = document.querySelector('.menu-field__sound-button');
     soundToggler.classList.toggle('sound-off');
     soundToggler.textContent = soundOn ? 'Sound: on' : 'Sound: off';
-
+}
+export function toggleSound() {
+    soundOn = !soundOn;
 }
