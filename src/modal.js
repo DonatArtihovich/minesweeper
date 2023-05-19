@@ -1,13 +1,11 @@
 import createElem from './element.js';
-import { turnsCount, curTime, restartGame } from './menu.js';
+import { turnsCount } from './turns-count.js';
+import { currentTime } from './timer.js';
+import { restartGame } from './start.js';
 
-export function openModal(boolean) {
+export function openModal(isWin) {
     setTimeout(() => {
-        if (boolean) {
-            createWinModal()
-        } else {
-            createEndModal()
-        }
+        isWin ? createWinModal() : createEndModal();
     }, 100);
 }
 
@@ -32,7 +30,7 @@ function createWinModal() {
     const modal = createElem('div', 'game-modal');
 
     const modalHeaderWrapper = createElem('div', 'game-modal__header-wrapper');
-    const modalHeader = createElem('p', 'game-modal__header', `Hooray! You found all mines in ${curTime} seconds and ${turnsCount} moves!`);
+    const modalHeader = createElem('p', 'game-modal__header', `Hooray! You found all mines in ${currentTime} seconds and ${turnsCount} moves!`);
     modalHeaderWrapper.append(modalHeader);
 
     const tryAgainButton = createElem('button', 'game-modal__button', 'Play again');
@@ -83,7 +81,6 @@ function createScoreTable() {
     const templateCell = createElem('td', 'score-table__cell');
 
     const headerRow = templateRow.cloneNode();
-    console.log(scoreArr)
     Object.keys(scoreArr[0]).forEach(key => {
         const curCell = templateHeader.cloneNode();
         const text = key.split('')[0].toUpperCase() + key.slice(1);

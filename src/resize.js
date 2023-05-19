@@ -1,4 +1,5 @@
 import { startGame } from "./start";
+import { changeTurnsCount } from "./turns-count";
 
 const sizesObj = {
     easy: {
@@ -20,22 +21,22 @@ const sizesObj = {
     }
 }
 
-export let curSize = sizesObj['easy'];
-export let curDifficulty = 'easy';
-export let curDifficultyIndex = 0;
+export let currentSize = sizesObj['easy'];
+export let currentDifficulty = 'easy';
+export let currentDifficultyIndex = 0;
 
-export function resizeField(newLevel) {
+export function resizeField(newLevel, isRebuilding) {
     const localStorage = window.localStorage;
-    if (localStorage.getItem('game')) localStorage.removeItem('game');
+    if (localStorage.getItem('game') && !isRebuilding) localStorage.removeItem('game');
 
     const sizeToggler = document.querySelector('.size-toggler');
     const sizeOptionIndex = sizeToggler.selectedIndex;
     const level = newLevel || sizeToggler.children[sizeOptionIndex].dataset.level;
-
-    curDifficultyIndex = sizeOptionIndex;
-    curDifficulty = level;
-    curSize = sizesObj[level];
     let levelBombCount;
+
+    currentDifficultyIndex = sizeOptionIndex;
+    currentDifficulty = level;
+    currentSize = sizesObj[level];
 
     switch (level) {
         case 'easy':
@@ -54,9 +55,10 @@ export function resizeField(newLevel) {
 
     const countToggler = document.querySelector('.count-toggler');
     countToggler.selectedIndex = levelBombCount - 10;
+    changeTurnsCount(0);
 }
 
-export function changeBombCount() {
+export function changeBombDifficulty() {
     const countToggler = document.querySelector('.count-toggler');
     const countOptionIndex = countToggler.selectedIndex;
     const count = countToggler.children[countOptionIndex].dataset.count;

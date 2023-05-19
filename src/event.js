@@ -2,99 +2,92 @@ import { gameMatrix } from './matrix.js';
 import { getCellData, getCellNeighbors } from './cell-data.js';
 import { checkStatus, endGame } from './status.js';
 import { createField } from './field.js';
-import { changeBombCount } from './field.js';
+import { currentBombCount, changeBombCount } from './field.js';
 import { playSound } from './sound.js';
 
 export let flagCount = 0;
 
 export function openCell(cell) {
-    const cellData = getCellData(cell);
+  const cellData = getCellData(cell);
 
-    if (cellData.hasFlag) {
-        playSound('flag');
+  if (cellData.hasFlag) {
+    playSound('flag');
 
-        cell.textContent = '';
-        cellData.hasFlag = false;
+    cell.textContent = '';
+    cellData.hasFlag = false;
 
-        if (cellData.isBomb) changeBombCount(true);
-        changeFlagCount();
-        return
+    if (cellData.isBomb) changeBombCount(currentBombCount + 1);
+    changeFlagCount(flagCount - 1);
+    return
+  }
+
+  if (cellData.isOpened) return;
+
+  cellData.isOpened = true;
+
+  if (!cellData.value) {
+    const neighborCells = getCellNeighbors(cellData.y, cellData.x);
+
+    playSound('cell');
+
+    cell.classList.add('main-field__cell_opened');
+
+    neighborCells.forEach(c => {
+      if (!c.isOpened) openCell(c.elem);
+    })
+
+  } else if (typeof cellData.value === 'number') {
+    playSound('cell');
+
+    cell.textContent = cellData.value;
+    cell.classList.add('main-field__cell_opened');
+  } else if (cellData.isBomb) {
+    const b = checkFirstTurnBomb();
+
+    if (!b) {
+      playSound('bomb');
+
+      cell.textContent = cellData.value;
+      cell.classList.add('main-field__bomb_opened');
+      endGame()
+    } else {
+      createField()
+      const index = (gameMatrix[0].length * cellData.y) + cellData.x;
+      const curElem = document.querySelector(`[data-index="${index}"]`);
+      openCell(curElem);
     }
+  }
 
-    if (cellData.isOpened) return;
-
-    cellData.isOpened = true;
-
-    if (!cellData.value) {
-        playSound('cell');
-
-        cell.classList.add('main-field__cell_opened');
-
-        const neighborCells = getCellNeighbors(cellData.y, cellData.x);
-
-        neighborCells.forEach(c => {
-            if (!c.isOpened) openCell(c.elem);
-        })
-
-    } else if (typeof cellData.value === 'number') {
-        playSound('cell');
-
-        cell.textContent = cellData.value;
-        cell.classList.add('main-field__cell_opened');
-    } else if (cellData.isBomb) {
-
-        const b = checkFirstTurnBomb();
-
-        if (!b) {
-            playSound('bomb');
-
-            cell.textContent = cellData.value;
-            cell.classList.add('main-field__bomb_opened');
-            endGame()
-        } else {
-            createField()
-            const index = (gameMatrix[0].length * cellData.y) + cellData.x;
-            const curElem = document.querySelector(`[data-index="${index}"]`);
-            openCell(curElem);
-        }
-    }
-
-    checkStatus()
+  checkStatus()
 }
 
-export function flagCell(event, cell, isRebuild) {
-    if (event) event.preventDefault();
+export function flagCell(event, cell) {
+  event.preventDefault();
+  const cellData = getCellData(cell);
+  if (cellData.isOpened || cellData.hasFlag) return
 
-    const cellData = getCellData(cell);
+  playSound('flag');
+  changeFlagCount(flagCount + 1);
+  cell.textContent = '🚩';
+  cellData.hasFlag = true;
 
-    if (cellData.isOpened || cellData.hasFlag) return
-    if (!isRebuild) playSound('flag');
-    changeFlagCount(true);
-    cell.textContent = '🚩';
-    cellData.hasFlag = true;
-
-    if (cellData.isBomb) changeBombCount()
-    checkStatus()
+  if (cellData.isBomb) changeBombCount(currentBombCount - 1)
+  checkStatus()
 }
 
 function checkFirstTurnBomb() {
-    let check = true;
-    gameMatrix.forEach(matrixRow => {
-        matrixRow.forEach(cell => {
-            if (cell.isOpened && !cell.isBomb) check = false
-        })
+  let check = true;
+  gameMatrix.forEach(matrixRow => {
+    matrixRow.forEach(cell => {
+      if (cell.isOpened && !cell.isBomb) check = false
     })
+  })
 
-    return check
+  return check
 }
 
-export function changeFlagCount(b, clear) {
-    b ? flagCount++ : flagCount--;
-    if (clear) flagCount = 0;
-    const flagCountElement = document.querySelector('.menu-field__flag-counter');
-    flagCountElement.textContent = `Flags: ${flagCount}`;
-}
-
-export function setFlagCount(count) {
-    flagCount = count
+export function changeFlagCount(value) {
+  flagCount = value;
+  const flagCountElement = document.querySelector('.menu-field__flag-counter');
+  flagCountElement.textContent = `Flags: ${flagCount}`;
 }

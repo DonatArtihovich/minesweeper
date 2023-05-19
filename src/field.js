@@ -2,77 +2,75 @@ import createElem from './element';
 import { createMatrix } from './matrix';
 import { getCellData } from './cell-data';
 import { changeFlagCount } from './event';
-import { curSize } from './resize';
+import { currentSize } from './resize';
 import { rebuildField } from './save';
 
-export let bombCount = 0;
+export let currentBombCount = 0;
+export let bombCount = 10;
 let curWidth = 10;
 let curHeight = 10;
-export let curBombCount = 10;
 
-export function createField(w = curWidth, h = curHeight, count = curBombCount) {
-    if (curWidth !== w) curWidth = w;
-    if (curHeight !== h) curHeight = h;
-    if (curBombCount !== count) curBombCount = count;
+export function createField(w = curWidth, h = curHeight, count = bombCount) {
+  if (curWidth !== w) curWidth = w;
+  if (curHeight !== h) curHeight = h;
+  if (bombCount !== count) bombCount = count;
+  currentBombCount = count;
 
-    const field = document.querySelector('.main-field');
-    field.innerHTML = '';
-    bombCount = count;
-    const templateCell = createElem('div', 'main-field__cell');
-    const templateRow = createElem('div', 'main-field__row');
+  const field = document.querySelector('.main-field');
+  field.innerHTML = '';
+  const templateCell = createElem('div', 'main-field__cell');
+  const templateRow = createElem('div', 'main-field__row');
 
-    for (let i = 0; i < h; i++) {
-        const curRow = templateRow.cloneNode();
-        for (let i = 0; i < w; i++) {
-            const curCell = templateCell.cloneNode();
-            curRow.append(curCell);
-        }
-        field.append(curRow);
+  for (let i = 0; i < h; i++) {
+    const curRow = templateRow.cloneNode();
+
+    for (let i = 0; i < w; i++) {
+      const curCell = templateCell.cloneNode();
+      curRow.append(curCell);
     }
 
-    const cellsArr = document.querySelectorAll('.main-field__cell');
+    field.append(curRow);
+  }
 
-    cellsArr.forEach((c, i) => {
-        c.dataset.index = i;
-    })
+  const cellsArr = document.querySelectorAll('.main-field__cell');
+  cellsArr.forEach((c, i) => {
+    c.dataset.index = i;
+  })
 
-    const localStorage = window.localStorage;
-    localStorage.getItem('game') ? rebuildField() : createMatrix(w, h, count);
+  const localStorage = window.localStorage;
+  if (!localStorage.getItem('game')) createMatrix(w, h, count);
 
-    cellsArr.forEach(c => {
-        const data = getCellData(c);
-        data.elem = c;
-        if (typeof data.value === 'number') c.classList.add(`main-field__cell_${data.value}`);
-    })
+  cellsArr.forEach(c => {
+    const data = getCellData(c);
+    data.elem = c;
+    if (typeof data.value === 'number') c.classList.add(`main-field__cell_${data.value}`);
+  })
 
-    const bombCountElement = document.querySelector('.menu-field__bomb-counter');
-    bombCountElement.textContent = `Bombs: ${bombCount}`;
-    changeFlagCount(false, true);
+  const bombCountElement = document.querySelector('.menu-field__bomb-counter');
+  bombCountElement.textContent = `Bombs: ${currentBombCount}`;
+  changeFlagCount(0);
 
-    changeSizes();
+  changeSizes();
 }
 
-export function changeBombCount(b) {
-    if (!bombCount) return;
-    b ? bombCount++ : bombCount--;
-    const bombCountElement = document.querySelector('.menu-field__bomb-counter');
-    bombCountElement.textContent = `Bombs: ${bombCount}`;
+export function changeBombCount(value) {
+  if (value < 0) return;
+
+  currentBombCount = value;
+  const bombCountElement = document.querySelector('.menu-field__bomb-counter');
+  bombCountElement.textContent = `Bombs: ${currentBombCount}`;
 }
 
 export function changeSizes() {
-    const fieldContainer = document.querySelector('.main-field');
-    const fieldCells = document.querySelectorAll('.main-field__cell');
+  const fieldContainer = document.querySelector('.main-field');
+  const fieldCells = document.querySelectorAll('.main-field__cell');
 
-    fieldContainer.style.width = `${curSize.field}px`;
-    fieldContainer.style.height = `${curSize.field}px`;
+  fieldContainer.style.width = `${currentSize.field}px`;
+  fieldContainer.style.height = `${currentSize.field}px`;
 
-    fieldCells.forEach(c => {
-        c.style.width = `${curSize.cell}px`;
-        c.style.height = `${curSize.cell}px`;
-        c.style.fontSize = `${curSize.font}px`;
-    })
-}
-
-export function setbombCount(count) {
-    bombCount = count;
+  fieldCells.forEach(c => {
+    c.style.width = `${currentSize.cell}px`;
+    c.style.height = `${currentSize.cell}px`;
+    c.style.fontSize = `${currentSize.font}px`;
+  })
 }
