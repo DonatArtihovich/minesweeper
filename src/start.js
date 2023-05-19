@@ -7,12 +7,7 @@ export function startGame(w, h, count, isRebuild) {
   startTimer();
 }
 
-export function restartGame(event) {
-  if (event?.target.classList.contains('menu-field__restart-button')) {
-    const localStorage = window.localStorage;
-    if (localStorage.getItem('game')) localStorage.removeItem('game');
-  }
-
+export function restartGame() {
   changeTurnsCount(0);
   startGame();
 }
