@@ -25,10 +25,7 @@ export let currentSize = sizesObj['easy'];
 export let currentDifficulty = 'easy';
 export let currentDifficultyIndex = 0;
 
-export function resizeField(newLevel, isRebuilding) {
-    const localStorage = window.localStorage;
-    if (localStorage.getItem('game') && !isRebuilding) localStorage.removeItem('game');
-
+export function resizeField(newLevel, isRebuild) {
     const sizeToggler = document.querySelector('.size-toggler');
     const sizeOptionIndex = sizeToggler.selectedIndex;
     const level = newLevel || sizeToggler.children[sizeOptionIndex].dataset.level;
@@ -41,15 +38,15 @@ export function resizeField(newLevel, isRebuilding) {
     switch (level) {
         case 'easy':
             levelBombCount = 10;
-            startGame(10, 10, levelBombCount);
+            startGame(10, 10, levelBombCount, isRebuild);
             break;
         case 'medium':
             levelBombCount = 20;
-            startGame(15, 15, levelBombCount);
+            startGame(15, 15, levelBombCount, isRebuild);
             break;
         case 'hard':
             levelBombCount = 60;
-            startGame(25, 25, levelBombCount);
+            startGame(25, 25, levelBombCount, isRebuild);
             break;
     }
 

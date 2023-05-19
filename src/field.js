@@ -10,7 +10,7 @@ export let bombCount = 10;
 let curWidth = 10;
 let curHeight = 10;
 
-export function createField(w = curWidth, h = curHeight, count = bombCount) {
+export function createField(w = curWidth, h = curHeight, count = bombCount, isRebuild) {
   if (curWidth !== w) curWidth = w;
   if (curHeight !== h) curHeight = h;
   if (bombCount !== count) bombCount = count;
@@ -37,8 +37,7 @@ export function createField(w = curWidth, h = curHeight, count = bombCount) {
     c.dataset.index = i;
   })
 
-  const localStorage = window.localStorage;
-  if (!localStorage.getItem('game')) createMatrix(w, h, count);
+  if (!isRebuild) createMatrix(w, h, count);
 
   cellsArr.forEach(c => {
     const data = getCellData(c);
