@@ -2,8 +2,9 @@ import { gameMatrix, setMatrix } from "./matrix";
 import { getCellData } from "./cell-data";
 import { bombCount, curBombCount } from "./field";
 import { flagCount } from "./event";
-import { turnsCount, curTime, startTimer } from "./menu";
+import { turnsCount, curTime, startTimer, setTurnsCount } from "./menu";
 import { curDifficulty, curDifficultyIndex, resizeField } from "./resize";
+import { soundOn, handleSoundButton } from "./sound";
 
 export default function saveGame() {
     const localStorage = window.localStorage;
@@ -19,7 +20,8 @@ export default function saveGame() {
         curTime: curTime,
         curDifficulty: curDifficulty,
         curDifficultyIndex: curDifficultyIndex,
-        curBombIndex: curBombCount - 10
+        curBombIndex: curBombCount - 10,
+        sound: soundOn
     }
     localStorage.setItem('game', JSON.stringify(stateObject));
 }
@@ -48,12 +50,15 @@ export function rebuildField() {
 
     const turnsCounter = document.querySelector('.menu-field__turns-counter');
     turnsCounter.textContent = `Turns: ${state.turnsCount}`;
+    setTurnsCount(state.turnsCount)
 
     const sizeToggler = document.querySelector('.size-toggler');
     sizeToggler.selectedIndex = state.curDifficultyIndex;
 
     const countToggler = document.querySelector('.count-toggler');
     countToggler.selectedIndex = state.curBombIndex;
+
+    if (soundOn !== state.sound) handleSoundButton();
 
     startTimer(state.curTime);
 }

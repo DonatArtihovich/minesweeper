@@ -129,3 +129,7 @@ export function startTimer(startTime = 0) {
 export function stopTimer() {
     clearInterval(intervalID);
 }
+
+export function setTurnsCount(count) {
+    turnsCount = count;
+}

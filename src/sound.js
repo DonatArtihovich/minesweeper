@@ -8,7 +8,7 @@ const bombSound = new Audio(bombPath);
 const flagSound = new Audio(flagPath);
 const winSound = new Audio(winPath);
 
-let soundOn = true;
+export let soundOn = true;
 
 export function playSound(sound) {
     if (!soundOn) return
