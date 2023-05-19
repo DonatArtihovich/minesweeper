@@ -94,3 +94,7 @@ export function changeFlagCount(b, clear) {
     const flagCountElement = document.querySelector('.menu-field__flag-counter');
     flagCountElement.textContent = `Flags: ${flagCount}`;
 }
+
+export function setFlagCount(count) {
+    flagCount = count
+}

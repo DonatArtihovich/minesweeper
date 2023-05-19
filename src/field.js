@@ -72,3 +72,7 @@ export function changeSizes() {
         c.style.fontSize = `${curSize.font}px`;
     })
 }
+
+export function setbombCount(count) {
+    bombCount = count;
+}

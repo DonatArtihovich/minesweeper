@@ -1,7 +1,7 @@
 import { gameMatrix, setMatrix } from "./matrix";
 import { getCellData } from "./cell-data";
-import { bombCount, curBombCount } from "./field";
-import { flagCount } from "./event";
+import { bombCount, curBombCount, setbombCount } from "./field";
+import { flagCount, setFlagCount } from "./event";
 import { turnsCount, curTime, startTimer, setTurnsCount } from "./menu";
 import { curDifficulty, curDifficultyIndex, resizeField } from "./resize";
 import { soundOn, handleSoundButton } from "./sound";
@@ -44,9 +44,11 @@ export function rebuildField() {
 
     const bombCountElement = document.querySelector('.menu-field__bomb-counter');
     bombCountElement.textContent = `Bombs: ${state.bombCount}`;
+    setbombCount(state.bombCount);
 
     const flagCountElement = document.querySelector('.menu-field__flag-counter');
     flagCountElement.textContent = `Flags: ${state.flagCount}`;
+    setFlagCount(state.flagCount);
 
     const turnsCounter = document.querySelector('.menu-field__turns-counter');
     turnsCounter.textContent = `Turns: ${state.turnsCount}`;
