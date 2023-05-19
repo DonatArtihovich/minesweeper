@@ -1,23 +1,31 @@
 import { startGame } from "./start";
 import { changeTurnsCount } from "./turns-count";
 
+const windowWidth = window.innerWidth;
+let templateSize = 33;
+if (windowWidth < 500) {
+    templateSize = 90;
+} else if (windowWidth < 1200) {
+    templateSize = 50;
+}
+
 const sizesObj = {
     easy: {
-        field: 500,
-        cell: 50,
-        font: 40
+        field: `${templateSize}vw`,
+        cell: `${templateSize / 10}vw`,
+        font: `${templateSize / 10 * 0.8}vw`
     },
 
     medium: {
-        field: 495,
-        cell: 33,
-        font: 30
+        field: `${templateSize}vw`,
+        cell: `${templateSize / 15}vw`,
+        font: `${templateSize / 15 * 0.9}vw`
     },
 
     hard: {
-        field: 500,
-        cell: 20,
-        font: 20
+        field: `${templateSize}vw`,
+        cell: `${templateSize / 25}vw`,
+        font: `${templateSize / 25}vw`
     }
 }
 
@@ -50,7 +58,7 @@ export function resizeField(newLevel, isRebuild) {
             break;
     }
 
-    const countToggler = document.querySelector('.count-toggler');
+    const countToggler = document.querySelector('.bombs-toggler');
     countToggler.selectedIndex = levelBombCount - 10;
     changeTurnsCount(0);
 }

@@ -3,7 +3,6 @@ import { createMatrix } from './matrix';
 import { getCellData } from './cell-data';
 import { changeFlagCount } from './event';
 import { currentSize } from './resize';
-import { rebuildField } from './save';
 
 export let currentBombCount = 0;
 export let bombCount = 10;
@@ -64,12 +63,12 @@ export function changeSizes() {
   const fieldContainer = document.querySelector('.main-field');
   const fieldCells = document.querySelectorAll('.main-field__cell');
 
-  fieldContainer.style.width = `${currentSize.field}px`;
-  fieldContainer.style.height = `${currentSize.field}px`;
+  fieldContainer.style.width = currentSize.field;
+  fieldContainer.style.height = currentSize.field;
 
   fieldCells.forEach(c => {
-    c.style.width = `${currentSize.cell}px`;
-    c.style.height = `${currentSize.cell}px`;
-    c.style.fontSize = `${currentSize.font}px`;
+    c.style.width = currentSize.cell;
+    c.style.height = currentSize.cell;
+    c.style.fontSize = currentSize.font;
   })
 }

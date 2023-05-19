@@ -29,12 +29,12 @@ export default function createMenu() {
 
   const sizeTogglerWrapper = createElem('div', 'size-toggler__wrapper toggler__wrapper');
   const sizeToggler = createSizeToggler();
-  const sizeTogglerHeader = createElem('span', 'menu-counter', 'Difficulty: ');
+  const sizeTogglerHeader = createElem('span', 'menu-counter size-toggler__header toggler__header', 'Difficulty: ');
   sizeTogglerWrapper.append(sizeTogglerHeader, sizeToggler);
 
-  const countTogglerWrapper = createElem('div', 'count-toggler__wrapper toggler__wrapper');
+  const countTogglerWrapper = createElem('div', 'bombs-toggler__wrapper toggler__wrapper');
   const countToggler = createBombCountToggler();
-  const countTogglerHeader = createElem('span', 'menu-counter', 'Bombs: ');
+  const countTogglerHeader = createElem('span', 'menu-counter bombs-toggler__header toggler__header', 'Bombs: ');
   countTogglerWrapper.append(countTogglerHeader, countToggler);
 
   const scoreButton = createElem('button', 'menu-field__score-button menu-field__button menu-field__bottom-button', 'Score');
@@ -68,8 +68,8 @@ function createSizeToggler() {
 }
 
 function createBombCountToggler() {
-  const countToggler = createElem('select', 'count-toggler toggler');
-  const templateOption = createElem('option', 'count-toggler__option toggler__option');
+  const countToggler = createElem('select', 'bombs-toggler toggler');
+  const templateOption = createElem('option', 'bombs-toggler__option toggler__option');
 
   for (let i = 10; i <= 99; i++) {
     const curOption = templateOption.cloneNode();

@@ -11,7 +11,10 @@ export function openModal(isWin) {
 
 function createEndModal() {
     const modalOverlay = createElem('div', 'modal-overlay');
-    const modal = createElem('div', 'game-modal');
+    const modal = createElem('div', 'game-modal status-modal');
+
+    const closeButton = createElem('button', 'game-modal__close-button status-modal__close-button', 'x');
+    closeButton.addEventListener('click', closeModal);
 
     const modalHeaderWrapper = createElem('div', 'game-modal__header-wrapper');
     const modalHeader = createElem('p', 'game-modal__header', 'Game over. Try again!');
@@ -20,7 +23,7 @@ function createEndModal() {
     const tryAgainButton = createElem('button', 'game-modal__button', 'Try again');
     tryAgainButton.addEventListener('click', tryAgain);
 
-    modal.append(modalHeaderWrapper, tryAgainButton);
+    modal.append(closeButton, modalHeaderWrapper, tryAgainButton);
     modalOverlay.append(modal);
     document.body.append(modalOverlay);
 }
@@ -29,6 +32,9 @@ function createWinModal() {
     const modalOverlay = createElem('div', 'modal-overlay');
     const modal = createElem('div', 'game-modal');
 
+    const closeButton = createElem('button', 'game-modal__close-button status-modal__close-button', 'x');
+    closeButton.addEventListener('click', closeModal);
+
     const modalHeaderWrapper = createElem('div', 'game-modal__header-wrapper');
     const modalHeader = createElem('p', 'game-modal__header', `Hooray! You found all mines in ${currentTime} seconds and ${turnsCount} moves!`);
     modalHeaderWrapper.append(modalHeader);
@@ -36,7 +42,7 @@ function createWinModal() {
     const tryAgainButton = createElem('button', 'game-modal__button', 'Play again');
     tryAgainButton.addEventListener('click', tryAgain);
 
-    modal.append(modalHeaderWrapper, tryAgainButton);
+    modal.append(closeButton, modalHeaderWrapper, tryAgainButton);
     modalOverlay.append(modal);
     document.body.append(modalOverlay);
 }

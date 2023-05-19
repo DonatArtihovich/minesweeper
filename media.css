@@ -1,0 +1,139 @@
+@media(max-width: 500px) {
+    html {
+        font-size: 7px;
+    }
+
+    .menu-field {
+        margin: 0 auto;
+        width: 80vw;
+    }
+
+    .menu-field__header-wrapper {
+        width: 60vw;
+    }
+
+    .menu-field__btns-wrapper {
+        width: 75vw;
+        display: grid;
+        grid-template-areas:
+            "turns-counter turns-counter timer timer bombs-counter flags-counter"
+            "restart sound sound sound difficulty-toggler difficulty-toggler"
+            "bombs-toggler bombs-toggler score score save save";
+    }
+
+    .menu-field__turns-counter {
+        white-space: nowrap;
+        margin-left: 20px;
+        grid-area: turns-counter;
+    }
+
+    .menu-field__timer {
+        white-space: nowrap;
+        grid-area: timer;
+    }
+
+    .menu-field__bombs-counter {
+        white-space: nowrap;
+        margin-right: 20px;
+        grid-area: bombs-counter;
+    }
+
+    .menu-field__flag-counter {
+        white-space: nowrap;
+        margin-right: 20px;
+        grid-area: flags-counter;
+    }
+
+    .menu-field__restart-button {
+        margin-left: 5px;
+        grid-area: restart;
+    }
+
+    .menu-field__sound-button {
+        white-space: nowrap;
+        grid-area: sound;
+    }
+
+    .size-toggler__wrapper {
+        margin-left: 10px;
+        grid-area: difficulty-toggler;
+    }
+
+    .bombs-toggler__wrapper {
+        margin-left: 10px;
+        grid-area: bombs-toggler;
+    }
+
+    .menu-field__score-button {
+        grid-area: score;
+    }
+
+    .menu-field__save-button {
+        margin-left: 20px;
+        /* width: 100px; */
+        grid-area: save;
+    }
+
+    .toggler {
+        width: 40px;
+        height: 25px;
+    }
+
+    .toggler__wrapper {
+        display: flex;
+        align-items: center;
+    }
+
+    .toggler__header {
+        margin: 0;
+    }
+
+    .game-modal {
+        width: 70%;
+        height: 50%;
+        background-size: 300%;
+        gap: 10px;
+    }
+
+    .game-modal__header-wrapper {
+        width: 60vw;
+    }
+
+    .game-modal__header {
+        font-size: 3rem;
+    }
+
+    .game-modal__button {
+        margin-top: 70px;
+        width: 50vw;
+        height: 20vw;
+    }
+
+    .status-modal {
+        justify-content: flex-start;
+    }
+
+    .status-modal__close-button {
+        margin: 20px;
+    }
+
+    .score-table {
+        width: 40vw;
+        height: 40vw;
+    }
+
+    .main-field {
+        margin: 50px auto 0;
+        width: 90vw;
+    }
+
+    .main-field__cell {
+        width: 9vw;
+    }
+}
+
+@media(max-width: 421px) {
+    html {
+        font-size: 5px;
+    }
+}

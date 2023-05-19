@@ -1,7 +1,12 @@
 :root {
-    --cell-closed: #567d2e;
+    --main-border: #567d2e;
     --bomb-opened: #e07102;
-    --cell-opened: #733709;
+    --secondary-border: #733709;
+    --header-color: #55C233;
+    --menu-text-color: #462105;
+    --modal-button-background: rgb(183, 77, 20);
+    --modal-button-text-color: black;
+    --button-active-color: #412007;
     --one-color: #55CEFF;
     --two-color: #55C233;
     --three-color: #d40000;
@@ -10,28 +15,28 @@
     --six-color: turquoise;
     --seven-color: black;
     --eight-color: white;
+    --main-background: url(./src/assets/images/forest.jpg);
+    --menu-background: url(./src/assets/images/wood.jpg);
+    --menu-wrapper-background: url(./src/assets/images/menu-bark.jpg);
+    --cell-closed-background: url(./src/assets/images/grass.jpg);
+    --cell-opened-background: url(./src/assets/images/earth.jpg);
+    --cell-bomb-background: url(./src/assets/images/explosion.jpg);
     --modal-background: url(./src/assets/images/bark.jpg);
-    --modal-border: rgb(119, 45, 20);
-    --modal-text: rgb(53, 227, 14);
-    --modal-text-background: url(./src/assets/images/leaf.jpg);
-    --modal-button-background: rgb(183, 77, 20);
-    --menu-background: url(./src/assets/images/menu-bark.jpg);
-    --header-color: #55C233;
-    --menu-btns-background: url(./src/assets/images/wood.jpg);
-    --button-text-color: black;
-    --menu-text-color: #462105;
-    --button-text-active-color: #532705;
-    --button-active-color: #412007;
+    --modal-header-background: url(./src/assets/images/leaf.jpg);
+}
+
+html {
+    font-size: 10px;
 }
 
 body {
-    background: url(./src/assets/images/forest.jpg);
+    background: var(--main-background);
 }
 
 .main-field {
-    margin: auto;
-    width: 500px;
-    height: 500px;
+    margin: 0 auto;
+    width: 33vw;
+    height: 33vw;
     border: 1px solid black;
     display: flex;
     flex-wrap: wrap;
@@ -42,11 +47,11 @@ body {
 
 .main-field__cell {
     box-sizing: border-box;
-    width: 50px;
-    height: 50px;
-    border: 1px solid var(--cell-closed);
-    background: url(./src/assets/images/grass.jpg);
-    font-size: 40px;
+    width: calc(33vw / 10);
+    height: calc(33vw / 10);
+    border: 1px solid var(--main-border);
+    background: var(--cell-closed-background);
+    font-size: 4rem;
     font-family: Arial;
     display: flex;
     align-items: center;
@@ -58,8 +63,8 @@ body {
 }
 
 .main-field__cell_opened {
-    background: url(./src/assets/images/earth.jpg);
-    border-color: var(--cell-opened);
+    background: var(--cell-opened-background);
+    border-color: var(--secondary-border);
 }
 
 .main-field__cell_opened:hover {
@@ -67,7 +72,7 @@ body {
 }
 
 .main-field__bomb_opened {
-    background: url(./src/assets/images/explosion.jpg);
+    background: var(--cell-bomb-background);
     border-color: var(--bomb-opened);
 }
 
@@ -119,25 +124,25 @@ body {
     background: var(--modal-background);
     background-repeat: no-repeat;
     background-size: 200%;
-    border: 5px solid var(--modal-border);
+    border: 5px solid var(--secondary-border);
     border-radius: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-around;
 }
 
 .game-modal__header-wrapper {
     width: 400px;
     text-align: center;
-    border: 3px solid var(--cell-closed);
-    background: var(--modal-text-background);
+    border: 3px solid var(--main-border);
+    background: var(--modal-header-background);
     border-radius: 10px;
 }
 
 .game-modal__header {
     font-family: Arial;
-    font-size: 30px;
+    font-size: 3rem;
     color: var(--header-color);
 }
 
@@ -145,21 +150,21 @@ body {
     width: 300px;
     height: 90px;
     background-color: var(--modal-button-background);
-    border: 3px solid var(--modal-border);
+    border: 3px solid var(--secondary-border);
     border-radius: 10px;
     font-family: Arial;
-    font-size: 30px;
-    color: var(--button-text-color);
+    font-size: 3rem;
+    color: var(--modal-button-text-color);
 }
 
 .game-modal__button:hover {
-    background-color: var(--cell-opened);
+    background-color: var(--secondary-border);
     cursor: pointer;
 }
 
 .game-modal__button:active {
     background-color: var(--button-active-color);
-    color: var(--button-text-active-color);
+    color: var(--secondary-border);
 }
 
 .menu-field {
@@ -167,8 +172,8 @@ body {
     width: 800px;
     height: 150px;
     border-radius: 20px;
-    border: 3px solid var(--modal-border);
-    background: var(--menu-background);
+    border: 3px solid var(--secondary-border);
+    background: var(--menu-wrapper-background);
     display: flex;
     flex-direction: column;
 }
@@ -177,9 +182,9 @@ body {
     margin: auto;
     padding: 10px 0;
     width: 600px;
-    background: var(--menu-btns-background);
+    background: var(--menu-background);
     background-size: 100%;
-    border: 5px solid var(--cell-opened);
+    border: 5px solid var(--secondary-border);
     border-radius: 10px;
     display: flex;
     flex-wrap: wrap;
@@ -191,8 +196,8 @@ body {
 .menu-field__header-wrapper {
     margin: auto;
     width: 400px;
-    background: var(--modal-text-background);
-    border: 5px solid var(--cell-closed);
+    background: var(--modal-header-background);
+    border: 5px solid var(--main-border);
     border-radius: 100px;
     font-family: Arial;
 }
@@ -201,27 +206,28 @@ body {
     margin: 0;
     text-align: center;
     color: var(--header-color);
+    font-size: 3rem;
 }
 
 .menu-field__button {
     margin-top: 10px;
     padding: 5px 10px;
     background-color: var(--header-color);
-    border: 3px solid var(--cell-closed);
+    border: 3px solid var(--main-border);
     border-radius: 10px;
     font-family: Arial;
-    font-size: 20px;
-    color: var(--cell-closed);
+    font-size: 2rem;
+    color: var(--main-border);
 }
 
 .menu-field__button:hover {
     cursor: pointer;
-    background-color: var(--cell-opened);
+    background-color: var(--secondary-border);
 }
 
 .menu-field__button:active {
     background-color: var(--button-active-color);
-    color: var(--button-text-active-color);
+    color: var(--secondary-border);
 }
 
 .menu-field__sound-button:hover {
@@ -230,28 +236,28 @@ body {
 
 .menu-field__sound-button:active {
     background-color: var(--header-color);
-    color: var(--cell-closed);
+    color: var(--main-border);
 }
 
 .menu-counter {
     margin: 10px 0 0;
-    font-size: 20px;
+    font-size: 2rem;
     font-family: Arial;
     color: var(--menu-text-color);
 }
 
 .sound-off {
-    background-color: var(--modal-border);
+    background-color: var(--secondary-border);
     border: 3px solid var(--three-color);
     color: var(--three-color);
 }
 
 .sound-off:hover {
-    background-color: var(--modal-border);
+    background-color: var(--secondary-border);
 }
 
 .sound-off:active {
-    background-color: var(--modal-border);
+    background-color: var(--secondary-border);
     color: var(--three-color);
 }
 
@@ -265,11 +271,11 @@ body {
     width: 100px;
     padding: 5px 10px;
     background-color: var(--header-color);
-    border: 3px solid var(--cell-closed);
+    border: 3px solid var(--main-border);
     border-radius: 10px;
     font-family: Arial;
-    font-size: 20px;
-    color: var(--cell-closed);
+    font-size: 2rem;
+    color: var(--main-border);
 }
 
 .toggler:hover {
@@ -282,15 +288,15 @@ body {
     margin-right: 20px;
     align-self: flex-end;
     background-color: var(--three-color);
-    border: 3px solid var(--modal-border);
+    border: 3px solid var(--secondary-border);
     border-radius: 50px;
-    color: var(--modal-border);
-    font-size: 30px;
+    color: var(--secondary-border);
+    font-size: 3rem;
 }
 
 .game-modal__close-button:hover {
     cursor: pointer;
-    background-color: var(--modal-border);
+    background-color: var(--secondary-border);
     border: 3px solid var(--three-color);
     color: var(--three-color);
 }
@@ -299,24 +305,24 @@ body {
     width: 400px;
     height: 400px;
     background-color: var(--header-color);
-    border: 3px solid var(--cell-closed);
+    border: 3px solid var(--main-border);
     border-radius: 10px;
 }
 
 .score-table__row {
-    border: 2px solid var(--cell-closed);
+    border: 2px solid var(--main-border);
 }
 
 .score-table__header-cell {
     text-align: center;
-    font-size: 20px;
-    color: var(--cell-closed);
+    font-size: 2rem;
+    color: var(--main-border);
 }
 
 .score-table__cell {
     text-align: center;
-    font-size: 20px;
-    color: var(--cell-closed);
+    font-size: 2rem;
+    color: var(--main-border);
 }
 
 .menu-field__bottom-button {
