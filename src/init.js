@@ -1,10 +1,9 @@
 import { startGame } from './start.js';
 import { openCell, flagCell } from './event';
 import { rebuildField } from './save.js';
+import { changeSizes } from './field.js';
 import createElem from './element.js';
 import createMenu from './menu.js';
-
-let currentWindowWidth = window.innerWidth;
 
 export function initGame() {
   const gameField = createElem('div', 'main-field')
@@ -15,14 +14,7 @@ export function initGame() {
   const localStorage = window.localStorage;
   localStorage.getItem('game') ? rebuildField() : startGame();
 
-  window.addEventListener('resize', () => {
-    if (window.innerWidth < 500 && currentWindowWidth < 500) return;
-    if (window.innerWidth > 500 && currentWindowWidth > 500) return;
-
-    currentWindowWidth = window.innerWidth;
-    document.body.innerHTML = '';
-    initGame()
-  });
+  window.addEventListener('resize', changeSizes);
 
   addCellListeners();
 }
