@@ -118,8 +118,8 @@ body {
 }
 
 .game-modal {
-    width: 30%;
-    height: 80%;
+    width: 400px;
+    height: 500px;
     margin: 5% auto;
     background: var(--modal-background);
     background-repeat: no-repeat;

@@ -1,7 +1,7 @@
 import { startGame } from "./start";
 import { changeTurnsCount } from "./turns-count";
 
-let templateSize = 33;
+let templateSize;
 
 export function setSize() {
   let windowWidth = window.innerWidth;
@@ -10,7 +10,11 @@ export function setSize() {
     templateSize = 90;
   } else if (windowWidth < 1200) {
     templateSize = 50;
+  } else {
+    templateSize = 33;
   }
+
+  console.log(templateSize);
 }
 
 const sizesObj = {
@@ -21,15 +25,15 @@ const sizesObj = {
   },
 
   medium: {
-    field: `${templateSize}vw`,
-    cell: `${templateSize / 15}vw`,
-    font: `${templateSize / 15 * 0.9}vw`
+    field: () => { return `${templateSize}vw` },
+    cell: () => { return `${templateSize / 15}vw` },
+    font: () => { return `${templateSize / 15 * 0.9}vw` }
   },
 
   hard: {
-    field: `${templateSize}vw`,
-    cell: `${templateSize / 25}vw`,
-    font: `${templateSize / 25}vw`
+    field: () => { return `${templateSize}vw` },
+    cell: () => { return `${templateSize / 25}vw` },
+    font: () => { return `${templateSize / 25}vw` }
   }
 }
 

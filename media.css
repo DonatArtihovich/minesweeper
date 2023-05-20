@@ -137,3 +137,39 @@
         font-size: 5px;
     }
 }
+
+@media(max-width: 500px) {
+    .game-modal {
+        width: 70%;
+        height: 50%;
+        background-size: 300%;
+        gap: 10px;
+    }
+
+    .game-modal__header-wrapper {
+        width: 60vw;
+    }
+
+    .game-modal__header {
+        font-size: 3rem;
+    }
+
+    .game-modal__button {
+        margin-top: 70px;
+        width: 50vw;
+        height: 20vw;
+    }
+
+    .status-modal {
+        justify-content: space-around;
+    }
+
+    .status-modal__close-button {
+        margin: 20px;
+    }
+
+    .score-table {
+        width: 40vw;
+        height: 40vw;
+    }
+}

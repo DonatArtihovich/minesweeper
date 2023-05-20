@@ -2,6 +2,7 @@ import { startGame } from './start.js';
 import { openCell, flagCell } from './event';
 import { rebuildField } from './save.js';
 import { changeSizes } from './field.js';
+import { setSize } from './resize.js';
 import createElem from './element.js';
 import createMenu from './menu.js';
 
@@ -10,6 +11,8 @@ export function initGame() {
   document.body.append(gameField);
 
   createMenu();
+
+  setSize();
 
   const localStorage = window.localStorage;
   localStorage.getItem('game') ? rebuildField() : startGame();
