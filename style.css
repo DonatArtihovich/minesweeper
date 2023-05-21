@@ -328,3 +328,20 @@ body {
 .menu-field__bottom-button {
     margin: 0 0 2px;
 }
+
+.theme-toggler-button {
+    width: 60px;
+    height: 60px;
+    background: var(--cell-opened-background);
+    border: 2px solid var(--main-border);
+    border-radius: 30px;
+    position: absolute;
+    right: 400px;
+    top: 25px;
+    font-size: 1.25rem;
+    color: var(--main-border);
+}
+
+.theme-toggler-button:hover {
+    cursor: pointer;
+}

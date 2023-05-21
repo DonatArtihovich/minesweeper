@@ -29,7 +29,8 @@ export default function saveGame() {
         curDifficulty: currentDifficulty,
         curDifficultyIndex: currentDifficultyIndex,
         curBombIndex: bombCount - 10,
-        sound: soundOn
+        sound: soundOn,
+        theme: document.body.className
     }
 
     localStorage.setItem('game', JSON.stringify(stateObject));
@@ -51,6 +52,8 @@ export function rebuildField() {
         const data = getCellData(c);
         data.elem = c;
     })
+
+    document.body.className = state.theme;
 
     changeBombCount(state.bombCount);
     changeFlagCount(state.flagCount);

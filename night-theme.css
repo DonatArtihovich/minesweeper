@@ -1,0 +1,216 @@
+:root {
+    --night-main-border: rgb(18, 19, 53);
+    --night-main-cell-border: #233512;
+    --night-bomb-opened: #9a4f04;
+    --night-secondary-border: #3f1e05;
+    --night-header-color: #12156d;
+    --night-menu-text-color: #2027ab;
+    --night-modal-button-background: rgb(11, 44, 128);
+    --modal-button-text-color: black;
+    --night-button-active-color: #412007;
+    --night-sound-off-border: #7b0000;
+    --night-one-color: #0a6284;
+    --night-two-color: #286e13;
+    --night-three-color: #9c0707;
+    --night-four-color: #0808a0;
+    --night-five-color: rgb(127, 14, 14);
+    --night-six-color: rgb(17, 147, 134);
+    --night-seven-color: rgb(83, 70, 70);
+    --night-eight-color: rgb(221, 204, 204);
+    --night-main-background: url(./src/assets/images/night-forest.jpg);
+    --night-menu-background: url(./src/assets/images/dark-wood.jpg);
+    --night-menu-wrapper-background: url(./src/assets/images/night-bark.jpg);
+    --night-cell-closed-background: url(./src/assets/images/night-grass.jpg);
+    --night-cell-opened-background: url(./src/assets/images/night-ground.jpg);
+    --cell-bomb-background: url(./src/assets/images/explosion.jpg);
+    --night-modal-background: url(./src/assets/images/night-modal-bark.jpg);
+    --night-modal-header-background: url(./src/assets/images/night-leaf.jpg);
+}
+
+body.night-theme {
+    background: var(--night-main-background);
+}
+
+.main-field {
+    border: 1px solid black;
+}
+
+.night-theme .main-field__cell {
+    border: 1px solid var(--night-main-cell-border);
+    background: var(--night-cell-closed-background);
+    color: rgb(0, 0, 0, 0.75);
+}
+
+.night-theme .main-field__cell_opened {
+    background: var(--night-cell-opened-background);
+    border-color: var(--night-secondary-border);
+}
+
+.night-theme .main-field__bomb_opened {
+    background: var(--cell-bomb-background);
+    border-color: var(--night-bomb-opened);
+}
+
+.night-theme .main-field__cell_1 {
+    color: var(--night-one-color);
+}
+
+.night-theme .main-field__cell_2 {
+    color: var(--night-two-color);
+}
+
+.night-theme .main-field__cell_3 {
+    color: var(--night-three-color);
+}
+
+.night-theme .main-field__cell_4 {
+    color: var(--night-four-color);
+}
+
+.night-theme .main-field__cell_5 {
+    color: var(--night-five-color);
+}
+
+.night-theme .main-field__cell_6 {
+    color: var(--night-six-color);
+}
+
+.night-theme .main-field__cell_7 {
+    color: var(--night-seven-color);
+}
+
+.night-theme .main-field__cell_8 {
+    color: var(--night-eight-color);
+}
+
+.night-theme .game-modal {
+    background: var(--night-modal-background);
+    border: 5px solid var(--night-secondary-border);
+}
+
+.night-theme .game-modal__header-wrapper {
+    border: 3px solid var(--night-main-border);
+    background: var(--night-modal-header-background);
+}
+
+.night-theme .game-modal__header {
+    color: var(--night-header-color);
+}
+
+.night-theme .game-modal__button {
+    background-color: var(--night-modal-button-background);
+    border: 3px solid var(--night-secondary-border);
+    color: var(--modal-button-text-color);
+}
+
+.night-theme .game-modal__button:hover {
+    background-color: var(--night-secondary-border);
+}
+
+.night-theme .game-modal__button:active {
+    background-color: var(--button-active-color);
+    color: var(--night-secondary-border);
+}
+
+.night-theme .menu-field {
+    border: 3px solid var(--night-secondary-border);
+    background: var(--night-menu-wrapper-background);
+}
+
+.night-theme .menu-field__btns-wrapper {
+    background: var(--night-menu-background);
+    border: 5px solid var(--night-secondary-border);
+}
+
+.night-theme .menu-field__header-wrapper {
+    background: var(--night-modal-header-background);
+    border: 5px solid var(--night-main-border);
+}
+
+.night-theme .menu-field__header {
+    color: var(--night-header-color);
+}
+
+.night-theme .menu-field__button {
+    background-color: var(--night-header-color);
+    border: 3px solid var(--night-main-border);
+    color: var(--night-main-border);
+}
+
+.night-theme .menu-field__button:hover {
+    background-color: var(--night-secondary-border);
+}
+
+.night-theme .menu-field__button:active {
+    background-color: var(--button-active-color);
+    color: var(--night-secondary-border);
+}
+
+.night-theme .menu-field__sound-button:hover {
+    background-color: var(--night-header-color);
+}
+
+.night-theme .menu-field__sound-button:active {
+    background-color: var(--night-header-color);
+    color: var(--night-main-border);
+}
+
+.night-theme .menu-counter {
+    color: var(--night-menu-text-color);
+}
+
+.night-theme .sound-off {
+    background-color: var(--night-secondary-border);
+    border: 3px solid var(--night-sound-off-border);
+    color: var(--night-sound-off-border);
+}
+
+.night-theme .sound-off:hover {
+    background-color: var(--night-secondary-border);
+}
+
+.night-theme .sound-off:active {
+    background-color: var(--night-secondary-border);
+    color: var(--night-sound-off-border);
+}
+
+.night-theme .toggler {
+    background-color: var(--night-header-color);
+    border: 3px solid var(--night-main-border);
+    color: var(--night-main-border);
+}
+
+.night-theme .game-modal__close-button {
+    background-color: var(--night-main-border);
+    border: 3px solid var(--night-secondary-border);
+    color: var(--night-secondary-border);
+}
+
+.night-theme .game-modal__close-button:hover {
+    background-color: var(--night-secondary-border);
+    border: 3px solid var(--night-main-border);
+    color: var(--night-main-border);
+}
+
+.night-theme .score-table {
+    background-color: var(--night-header-color);
+    border: 3px solid var(--night-main-border);
+}
+
+.night-theme .score-table__row {
+    border: 2px solid var(--night-main-border);
+}
+
+.night-theme .score-table__header-cell {
+    color: var(--night-main-border);
+}
+
+.night-theme .score-table__cell {
+    color: var(--night-main-border);
+}
+
+.night-theme .theme-toggler-button {
+    background: var(--night-cell-opened-background);
+    border: 2px solid var(--night-menu-text-color);
+    color: var(--night-menu-text-color);
+}

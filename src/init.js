@@ -5,12 +5,14 @@ import { changeSizes } from './field.js';
 import { setSize } from './resize.js';
 import createElem from './element.js';
 import createMenu from './menu.js';
+import changeTheme from './theme.js';
 
 export function initGame() {
   const gameField = createElem('div', 'main-field')
   document.body.append(gameField);
 
   createMenu();
+  addThemeTogglerButton();
 
   setSize();
 
@@ -31,4 +33,10 @@ function addCellListeners() {
   gameField.addEventListener('contextmenu', event => {
     if (event.target.classList.contains('main-field__cell')) flagCell(event, event.target);
   });
+}
+
+function addThemeTogglerButton() {
+  const themeToggler = createElem('button', 'theme-toggler-button', 'Change Theme!');
+  document.body.append(themeToggler);
+  themeToggler.addEventListener('click', changeTheme);
 }
