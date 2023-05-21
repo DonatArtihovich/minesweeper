@@ -1,26 +1,16 @@
-import { gameMatrix } from './matrix.js';
-import { openModal } from './modal.js';
-import { playSound } from './sound.js';
-import { turnsCount } from './turns-count.js';
-import { currentTime, stopTimer } from './timer.js';
-import { setScore } from './score.js';
-import { currentDifficulty } from './resize.js';
-import { bombCount } from './field.js';
+import { gameMatrix } from './matrix';
+import { openModal } from './modal';
+import { playSound } from './sound';
+import { turnsCount } from './turns-count';
+import { currentTime, stopTimer } from './timer';
+import { currentDifficulty } from './resize';
+import { bombCount } from './field';
+import setScore from './score';
 
 let isGameOver = false;
 
-export function checkStatus() {
-  let check = true;
-
-  gameMatrix.forEach(matrixLine => {
-    matrixLine.forEach(item => {
-      if ((!item.isOpened && !item.isBomb) || (item.hasFlag && !item.isBomb) || (item.isBomb && item.isOpened)) {
-        check = false;
-      }
-    })
-  })
-
-  if (check) winGame()
+export function changeGameOverStatus(b) {
+  isGameOver = b;
 }
 
 export function endGame() {
@@ -28,7 +18,6 @@ export function endGame() {
 
   changeGameOverStatus(true);
   gameMatrix.forEach((matrixRow, y) => {
-
     matrixRow.forEach((cell, x) => {
       const index = (gameMatrix[0].length * y) + x;
       const curElem = document.querySelector(`[data-index="${index}"]`);
@@ -40,8 +29,8 @@ export function endGame() {
       }
 
       stopTimer();
-    })
-  })
+    });
+  });
   openModal(false);
   setScore('Loss', currentTime, turnsCount, currentDifficulty, bombCount);
 }
@@ -50,13 +39,25 @@ function winGame() {
   if (isGameOver) return;
 
   changeGameOverStatus(true);
-  if (!!document.querySelector('.game-modal')) return
+  if (document.querySelector('.game-modal')) return;
   stopTimer();
   playSound('win');
   openModal(true);
   setScore('Win', currentTime, turnsCount, currentDifficulty, bombCount);
 }
 
-export function changeGameOverStatus(b) {
-  isGameOver = b;
+export function checkStatus() {
+  let check = true;
+
+  gameMatrix.forEach((matrixLine) => {
+    matrixLine.forEach((item) => {
+      if ((!item.isOpened && !item.isBomb)
+        || (item.hasFlag && !item.isBomb)
+        || (item.isBomb && item.isOpened)) {
+        check = false;
+      }
+    });
+  });
+
+  if (check) winGame();
 }

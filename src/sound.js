@@ -11,7 +11,7 @@ const winSound = new Audio(winPath);
 export let soundOn = true;
 
 export function playSound(sound) {
-  if (!soundOn) return
+  if (!soundOn) return;
 
   switch (sound) {
     case 'cell':

@@ -1,7 +1,7 @@
-import { startTimer } from './timer.js';
-import { createField } from './field.js';
-import { changeTurnsCount } from './turns-count.js';
-import { changeGameOverStatus } from './status.js';
+import { startTimer } from './timer';
+import { createField } from './field';
+import { changeTurnsCount } from './turns-count';
+import { changeGameOverStatus } from './status';
 
 export function startGame(w, h, count, isRebuild) {
   createField(w, h, count, isRebuild);

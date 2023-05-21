@@ -1,10 +1,10 @@
-import { restartGame } from './start.js';
-import { toggleSound } from './sound.js';
-import { resizeField, changeBombDifficulty } from './resize.js';
-import { openScoreModal } from './modal.js';
-import { createTurnsCounter } from './turns-count.js';
-import createElem from './element.js';
-import saveGame from './save.js';
+import { restartGame } from './start';
+import { toggleSound } from './sound';
+import { resizeField, changeBombDifficulty } from './resize';
+import { openScoreModal } from './modal';
+import { createTurnsCounter } from './turns-count';
+import createElem from './element';
+import saveGame from './save';
 
 export default function createMenu() {
   const menuField = createElem('div', 'menu-field');
@@ -44,9 +44,18 @@ export default function createMenu() {
   saveButton.addEventListener('click', saveGame);
 
   headerWrapper.append(menuHeader);
-  menuWrapper.append(turnsFieldCount, fieldTimer, bombFieldCount,
-    flagFieldCount, restartButton, soundToggler, sizeTogglerWrapper,
-    countTogglerWrapper, scoreButton, saveButton);
+  menuWrapper.append(
+    turnsFieldCount,
+    fieldTimer,
+    bombFieldCount,
+    flagFieldCount,
+    restartButton,
+    soundToggler,
+    sizeTogglerWrapper,
+    countTogglerWrapper,
+    scoreButton,
+    saveButton,
+  );
   menuField.append(headerWrapper, menuWrapper);
   document.body.prepend(menuField);
 }
@@ -62,16 +71,16 @@ function createSizeToggler() {
   hardOption.dataset.level = 'hard';
   sizeToggler.append(easyOption, mediumOption, hardOption);
 
-  sizeToggler.addEventListener('change', () => resizeField())
+  sizeToggler.addEventListener('change', () => resizeField());
 
-  return sizeToggler
+  return sizeToggler;
 }
 
 function createBombCountToggler() {
   const countToggler = createElem('select', 'bombs-toggler toggler');
   const templateOption = createElem('option', 'bombs-toggler__option toggler__option');
 
-  for (let i = 10; i <= 99; i++) {
+  for (let i = 10; i <= 99; i += 1) {
     const curOption = templateOption.cloneNode();
     curOption.textContent = i;
     curOption.dataset.count = i;
@@ -80,5 +89,5 @@ function createBombCountToggler() {
 
   countToggler.addEventListener('change', () => changeBombDifficulty());
 
-  return countToggler
+  return countToggler;
 }

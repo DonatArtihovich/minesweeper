@@ -2,8 +2,7 @@ import createElem from './element';
 import { createMatrix } from './matrix';
 import { getCellData } from './cell-data';
 import { changeFlagCount } from './event';
-import { currentSize } from './resize';
-import { setSize } from './resize';
+import { currentSize, setSize } from './resize';
 
 export let currentBombCount = 0;
 export let bombCount = 10;
@@ -35,15 +34,15 @@ export function createField(w = curWidth, h = curHeight, count = bombCount, isRe
   const cellsArr = document.querySelectorAll('.main-field__cell');
   cellsArr.forEach((c, i) => {
     c.dataset.index = i;
-  })
+  });
 
   if (!isRebuild) createMatrix(w, h, count);
 
-  cellsArr.forEach(c => {
+  cellsArr.forEach((c) => {
     const data = getCellData(c);
     data.elem = c;
     if (typeof data.value === 'number') c.classList.add(`main-field__cell_${data.value}`);
-  })
+  });
 
   const bombCountElement = document.querySelector('.menu-field__bomb-counter');
   bombCountElement.textContent = `Bombs: ${currentBombCount}`;
@@ -69,9 +68,9 @@ export function changeSizes() {
   fieldContainer.style.width = currentSize.field();
   fieldContainer.style.height = currentSize.field();
 
-  fieldCells.forEach(c => {
+  fieldCells.forEach((c) => {
     c.style.width = currentSize.cell();
     c.style.height = currentSize.cell();
     c.style.fontSize = currentSize.font();
-  })
+  });
 }

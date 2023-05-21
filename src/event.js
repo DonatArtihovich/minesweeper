@@ -1,9 +1,9 @@
-import { gameMatrix } from './matrix.js';
-import { getCellData, getCellNeighbors } from './cell-data.js';
-import { checkStatus, endGame } from './status.js';
-import { createField } from './field.js';
-import { currentBombCount, changeBombCount } from './field.js';
-import { playSound } from './sound.js';
+import { gameMatrix } from './matrix';
+import { getCellData, getCellNeighbors } from './cell-data';
+import { checkStatus, endGame } from './status';
+import { createField, currentBombCount, changeBombCount } from './field';
+
+import { playSound } from './sound';
 
 export let flagCount = 0;
 
@@ -18,7 +18,7 @@ export function openCell(cell) {
 
     if (cellData.isBomb) changeBombCount(currentBombCount + 1);
     changeFlagCount(flagCount - 1);
-    return
+    return;
   }
 
   if (cellData.isOpened) return;
@@ -32,10 +32,9 @@ export function openCell(cell) {
 
     cell.classList.add('main-field__cell_opened');
 
-    neighborCells.forEach(c => {
+    neighborCells.forEach((c) => {
       if (!c.isOpened) openCell(c.elem);
-    })
-
+    });
   } else if (typeof cellData.value === 'number') {
     playSound('cell');
 
@@ -49,41 +48,41 @@ export function openCell(cell) {
 
       cell.textContent = cellData.value;
       cell.classList.add('main-field__bomb_opened');
-      endGame()
+      endGame();
     } else {
-      createField()
+      createField();
       const index = (gameMatrix[0].length * cellData.y) + cellData.x;
       const curElem = document.querySelector(`[data-index="${index}"]`);
       openCell(curElem);
     }
   }
 
-  checkStatus()
+  checkStatus();
 }
 
 export function flagCell(event, cell) {
   event.preventDefault();
   const cellData = getCellData(cell);
-  if (cellData.isOpened || cellData.hasFlag) return
+  if (cellData.isOpened || cellData.hasFlag) return;
 
   playSound('flag');
   changeFlagCount(flagCount + 1);
   cell.textContent = '🚩';
   cellData.hasFlag = true;
 
-  if (cellData.isBomb) changeBombCount(currentBombCount - 1)
-  checkStatus()
+  if (cellData.isBomb) changeBombCount(currentBombCount - 1);
+  checkStatus();
 }
 
 function checkFirstTurnBomb() {
   let check = true;
-  gameMatrix.forEach(matrixRow => {
-    matrixRow.forEach(cell => {
-      if (cell.isOpened && !cell.isBomb) check = false
-    })
-  })
+  gameMatrix.forEach((matrixRow) => {
+    matrixRow.forEach((cell) => {
+      if (cell.isOpened && !cell.isBomb) check = false;
+    });
+  });
 
-  return check
+  return check;
 }
 
 export function changeFlagCount(value) {

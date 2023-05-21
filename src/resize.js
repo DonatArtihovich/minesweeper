@@ -1,10 +1,10 @@
-import { startGame } from "./start";
-import { changeTurnsCount } from "./turns-count";
+import { startGame } from './start';
+import { changeTurnsCount } from './turns-count';
 
 let templateSize;
 
 export function setSize() {
-  let windowWidth = window.innerWidth;
+  const windowWidth = window.innerWidth;
 
   if (windowWidth < 790) {
     templateSize = 90;
@@ -13,31 +13,29 @@ export function setSize() {
   } else {
     templateSize = 33;
   }
-
-  console.log(templateSize);
 }
 
 const sizesObj = {
   easy: {
-    field: () => { return `${templateSize}vw` },
-    cell: () => { return `${templateSize / 10}vw` },
-    font: () => { return `${templateSize / 10 * 0.8}vw` }
+    field: () => `${templateSize}vw`,
+    cell: () => `${templateSize / 10}vw`,
+    font: () => `${(templateSize / 10) * 0.8}vw`,
   },
 
   medium: {
-    field: () => { return `${templateSize}vw` },
-    cell: () => { return `${templateSize / 15}vw` },
-    font: () => { return `${templateSize / 15 * 0.9}vw` }
+    field: () => `${templateSize}vw`,
+    cell: () => `${templateSize / 15}vw`,
+    font: () => `${(templateSize / 15) * 0.9}vw`,
   },
 
   hard: {
-    field: () => { return `${templateSize}vw` },
-    cell: () => { return `${templateSize / 25}vw` },
-    font: () => { return `${templateSize / 25}vw` }
-  }
-}
+    field: () => `${templateSize}vw`,
+    cell: () => `${templateSize / 25}vw`,
+    font: () => `${templateSize / 25}vw`,
+  },
+};
 
-export let currentSize = sizesObj['easy'];
+export let currentSize = sizesObj.easy;
 export let currentDifficulty = 'easy';
 export let currentDifficultyIndex = 0;
 
@@ -64,6 +62,8 @@ export function resizeField(newLevel, isRebuild) {
       levelBombCount = 60;
       startGame(25, 25, levelBombCount, isRebuild);
       break;
+    default:
+      break;
   }
 
   const countToggler = document.querySelector('.bombs-toggler');
@@ -74,7 +74,7 @@ export function resizeField(newLevel, isRebuild) {
 export function changeBombDifficulty() {
   const bombsToggler = document.querySelector('.bombs-toggler');
   const bombsOptionIndex = bombsToggler.selectedIndex;
-  const count = bombsToggler.children[bombsOptionIndex].dataset.count;
+  const { count } = bombsToggler.children[bombsOptionIndex].dataset;
 
   startGame(undefined, undefined, count);
 }

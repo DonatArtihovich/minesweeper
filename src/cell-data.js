@@ -1,23 +1,23 @@
-import { gameMatrix } from './matrix.js';
+import { gameMatrix } from './matrix';
 
 export function getCellData(cell) {
-    const matrixWidth = gameMatrix[0].length;
-    const cellIndex = cell.dataset.index;
-    const y = Math.floor(cellIndex / matrixWidth);
-    const x = cellIndex % matrixWidth;
+  const matrixWidth = gameMatrix[0].length;
+  const cellIndex = cell.dataset.index;
+  const y = Math.floor(cellIndex / matrixWidth);
+  const x = cellIndex % matrixWidth;
 
-    const cellData = gameMatrix[y][x];
+  const cellData = gameMatrix[y][x];
 
-    return cellData
+  return cellData;
 }
 
 export function getCellNeighbors(y, x) {
-    const out = [];
-    for (let i = y - 1; i <= y + 1; i++) {
-        for (let j = x - 1; j <= x + 1; j++) {
-            if (gameMatrix[i]?.[j] !== undefined && !(i === y && j === x)) out.push(gameMatrix[i][j]);
-        }
+  const out = [];
+  for (let i = y - 1; i <= y + 1; i += 1) {
+    for (let j = x - 1; j <= x + 1; j += 1) {
+      if (gameMatrix[i]?.[j] !== undefined && !(i === y && j === x)) out.push(gameMatrix[i][j]);
     }
+  }
 
-    return out
+  return out;
 }
