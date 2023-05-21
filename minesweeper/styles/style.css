@@ -15,14 +15,14 @@
     --six-color: turquoise;
     --seven-color: black;
     --eight-color: white;
-    --main-background: url(./src/assets/images/forest.jpg);
-    --menu-background: url(./src/assets/images/wood.jpg);
-    --menu-wrapper-background: url(./src/assets/images/menu-bark.jpg);
-    --cell-closed-background: url(./src/assets/images/grass.jpg);
-    --cell-opened-background: url(./src/assets/images/earth.jpg);
-    --cell-bomb-background: url(./src/assets/images/explosion.jpg);
-    --modal-background: url(./src/assets/images/bark.jpg);
-    --modal-header-background: url(./src/assets/images/leaf.jpg);
+    --main-background: url(../assets/images/forest.jpg);
+    --menu-background: url(../assets/images/wood.jpg);
+    --menu-wrapper-background: url(../assets/images/menu-bark.jpg);
+    --cell-closed-background: url(../assets/images/grass.jpg);
+    --cell-opened-background: url(../assets/images/earth.jpg);
+    --cell-bomb-background: url(../assets/images/explosion.jpg);
+    --modal-background: url(../assets/images/bark.jpg);
+    --modal-header-background: url(../assets/images/leaf.jpg);
 }
 
 html {

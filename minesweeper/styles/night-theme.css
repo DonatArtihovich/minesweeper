@@ -17,14 +17,14 @@
     --night-six-color: rgb(17, 147, 134);
     --night-seven-color: rgb(83, 70, 70);
     --night-eight-color: rgb(221, 204, 204);
-    --night-main-background: url(./src/assets/images/night-forest.jpg);
-    --night-menu-background: url(./src/assets/images/dark-wood.jpg);
-    --night-menu-wrapper-background: url(./src/assets/images/night-bark.jpg);
-    --night-cell-closed-background: url(./src/assets/images/night-grass.jpg);
-    --night-cell-opened-background: url(./src/assets/images/night-ground.jpg);
-    --cell-bomb-background: url(./src/assets/images/explosion.jpg);
-    --night-modal-background: url(./src/assets/images/night-modal-bark.jpg);
-    --night-modal-header-background: url(./src/assets/images/night-leaf.jpg);
+    --night-main-background: url(../assets/images/night-forest.jpg);
+    --night-menu-background: url(../assets/images/dark-wood.jpg);
+    --night-menu-wrapper-background: url(../assets/images/night-bark.jpg);
+    --night-cell-closed-background: url(../assets/images/night-grass.jpg);
+    --night-cell-opened-background: url(../assets/images/night-ground.jpg);
+    --cell-bomb-background: url(../assets/images/explosion.jpg);
+    --night-modal-background: url(../assets/images/night-modal-bark.jpg);
+    --night-modal-header-background: url(../assets/images/night-leaf.jpg);
 }
 
 body.night-theme {

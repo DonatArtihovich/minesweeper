@@ -3,17 +3,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 
 module.exports = {
-  entry: './minesweeper/src/index.js',
+  entry: './minesweeper/js/index.js',
   mode: 'development',
-  module: {
-    rules: [
-      { test: /\.css$/, use: ['style-loader', 'css-loader'] },
-      {
-        test: /\.(png|svg|jpg|jpeg|gif|ogg|mp3|wav)$/i,
-        type: 'asset/resource',
-      },
-    ],
-  },
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
@@ -22,12 +13,21 @@ module.exports = {
       return `${filepath}/[name][ext]`;
     },
   },
+  module: {
+    rules: [
+      { test: /\.css$/, use: ['style-loader', 'css-loader'] },
+      {
+        test: /\.(png|ico|svg|jpg|jpeg|gif|ogg|mp3|wav)$/i,
+        type: 'asset/resource',
+      },
+    ],
+  },
   plugins: [
     new HtmlWebpackPlugin({
       title: 'Minesweeper',
     }),
     new FaviconsWebpackPlugin({
-      logo: './minesweeper/src/assets/images/icon.png',
+      logo: './minesweeper/assets/images/icon.png',
     }),
   ],
 };

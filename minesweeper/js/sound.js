@@ -1,7 +1,7 @@
-import cellPath from './assets/audio/cell.mp3';
-import bombPath from './assets/audio/bomb.mp3';
-import flagPath from './assets/audio/flag.mp3';
-import winPath from './assets/audio/win.mp3';
+import cellPath from '../assets/audio/cell.mp3';
+import bombPath from '../assets/audio/bomb.mp3';
+import flagPath from '../assets/audio/flag.mp3';
+import winPath from '../assets/audio/win.mp3';
 
 const cellSound = new Audio(cellPath);
 const bombSound = new Audio(bombPath);
