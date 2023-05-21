@@ -336,7 +336,7 @@ body {
     border: 2px solid var(--main-border);
     border-radius: 30px;
     position: absolute;
-    right: 400px;
+    right: 26vw;
     top: 25px;
     font-size: 1.25rem;
     color: var(--main-border);

@@ -1,3 +1,33 @@
+@media(max-width: 1398px) {
+    .theme-toggler-button {
+        right: 23vw;
+    }
+}
+
+@media(max-width: 1256px) {
+    .theme-toggler-button {
+        right: 20vw;
+    }
+}
+
+@media(max-width: 1136px) {
+    .theme-toggler-button {
+        right: 16vw;
+    }
+}
+
+@media(max-width: 1081px) {
+    .theme-toggler-button {
+        right: 13vw;
+    }
+}
+
+@media(max-width: 841px) {
+    .theme-toggler-button {
+        right: 5vw;
+    }
+}
+
 @media(max-width: 768px) {
     html {
         font-size: 7px;
@@ -70,7 +100,6 @@
 
     .menu-field__save-button {
         margin-left: 20px;
-        /* width: 100px; */
         grid-area: save;
     }
 
@@ -132,13 +161,12 @@
     }
 }
 
-@media(max-width: 421px) {
+
+@media(max-width: 500px) {
     html {
         font-size: 5px;
     }
-}
 
-@media(max-width: 500px) {
     .game-modal {
         width: 70%;
         height: 50%;
@@ -171,5 +199,10 @@
     .score-table {
         width: 40vw;
         height: 40vw;
+    }
+
+    .theme-toggler-button {
+        width: 40px;
+        height: 40px;
     }
 }

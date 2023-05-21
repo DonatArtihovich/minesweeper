@@ -7,6 +7,8 @@ import { setScore } from './score.js';
 import { currentDifficulty } from './resize.js';
 import { bombCount } from './field.js';
 
+let isGameOver = false;
+
 export function checkStatus() {
   let check = true;
 
@@ -22,6 +24,9 @@ export function checkStatus() {
 }
 
 export function endGame() {
+  if (isGameOver) return;
+
+  changeGameOverStatus(true);
   gameMatrix.forEach((matrixRow, y) => {
 
     matrixRow.forEach((cell, x) => {
@@ -42,9 +47,16 @@ export function endGame() {
 }
 
 function winGame() {
+  if (isGameOver) return;
+
+  changeGameOverStatus(true);
   if (!!document.querySelector('.game-modal')) return
   stopTimer();
   playSound('win');
   openModal(true);
   setScore('Win', currentTime, turnsCount, currentDifficulty, bombCount);
+}
+
+export function changeGameOverStatus(b) {
+  isGameOver = b;
 }

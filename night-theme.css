@@ -99,16 +99,16 @@ body.night-theme {
 
 .night-theme .game-modal__button {
     background-color: var(--night-modal-button-background);
-    border: 3px solid var(--night-secondary-border);
+    border: 3px solid var(--night-main-border);
     color: var(--modal-button-text-color);
 }
 
 .night-theme .game-modal__button:hover {
-    background-color: var(--night-secondary-border);
+    background-color: var(--night-main-border);
 }
 
 .night-theme .game-modal__button:active {
-    background-color: var(--button-active-color);
+    background-color: var(--night-modal-button-background);
     color: var(--night-secondary-border);
 }
 
