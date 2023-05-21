@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 
 module.exports = {
-  entry: './src/index.js',
+  entry: './minesweeper/src/index.js',
   mode: 'development',
   module: {
     rules: [
@@ -24,7 +24,7 @@ module.exports = {
       title: 'Minesweeper',
     }),
     new FaviconsWebpackPlugin({
-      logo: './src/assets/images/icon.png',
+      logo: './minesweeper/src/assets/images/icon.png',
     }),
   ],
 };
