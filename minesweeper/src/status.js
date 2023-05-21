@@ -11,7 +11,6 @@ let isGameOver = false;
 
 export function changeGameOverStatus(b) {
   isGameOver = b;
-  console.log(isGameOver)
 }
 
 export function endGame() {

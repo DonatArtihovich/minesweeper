@@ -5,14 +5,18 @@ let templateSize;
 
 export function setSize() {
   const windowWidth = window.innerWidth;
+  const windowHeight = window.innerHeight;
 
   if (windowWidth < 790) {
     templateSize = 90;
+    return
   } else if (windowWidth < 1200) {
     templateSize = 50;
   } else {
     templateSize = 33;
   }
+
+  if (windowWidth > 1571) templateSize = 22;
 }
 
 const sizesObj = {
