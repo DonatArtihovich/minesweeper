@@ -69,6 +69,7 @@ export function resizeField(newLevel, isRebuild) {
   const countToggler = document.querySelector('.bombs-toggler');
   countToggler.selectedIndex = levelBombCount - 10;
   changeTurnsCount(0);
+
 }
 
 export function changeBombDifficulty() {
@@ -77,4 +78,5 @@ export function changeBombDifficulty() {
   const { count } = bombsToggler.children[bombsOptionIndex].dataset;
 
   startGame(undefined, undefined, count);
+
 }
