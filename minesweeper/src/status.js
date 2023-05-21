@@ -11,12 +11,12 @@ let isGameOver = false;
 
 export function changeGameOverStatus(b) {
   isGameOver = b;
+  console.log(isGameOver)
 }
 
 export function endGame() {
   if (isGameOver) return;
 
-  changeGameOverStatus(true);
   gameMatrix.forEach((matrixRow, y) => {
     matrixRow.forEach((cell, x) => {
       const index = (gameMatrix[0].length * y) + x;
@@ -32,17 +32,18 @@ export function endGame() {
     });
   });
   openModal(false);
+  changeGameOverStatus(true);
   setScore('Loss', currentTime, turnsCount, currentDifficulty, bombCount);
 }
 
 function winGame() {
   if (isGameOver) return;
 
-  changeGameOverStatus(true);
   if (document.querySelector('.game-modal')) return;
   stopTimer();
   playSound('win');
   openModal(true);
+  changeGameOverStatus(true);
   setScore('Win', currentTime, turnsCount, currentDifficulty, bombCount);
 }
 

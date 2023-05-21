@@ -4,9 +4,9 @@ import { changeTurnsCount } from './turns-count';
 import { changeGameOverStatus } from './status';
 
 export function startGame(w, h, count, isRebuild) {
+  changeGameOverStatus(false);
   createField(w, h, count, isRebuild);
   startTimer();
-  changeGameOverStatus(false);
 }
 
 export function restartGame() {
