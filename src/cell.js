@@ -1,4 +1,4 @@
-import { getCellNeighbors } from './cell-data';
+import { getCellNeighbors } from './cell-data.js';
 
 export class Cell {
   constructor(isBomb, y, x) {
