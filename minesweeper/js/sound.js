@@ -26,6 +26,7 @@ export function playSound(sound) {
       flagSound.play();
       break;
     case 'win':
+      winSound.currentTime = 0;
       winSound.play();
       break;
     default:
