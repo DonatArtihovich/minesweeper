@@ -5,11 +5,11 @@ export let turnsCount = 0;
 export function changeTurnsCount(value) {
   turnsCount = value;
   const turnsFieldCount = document.querySelector('.menu-field__turns-counter');
-  turnsFieldCount.innerText = `Turns: ${turnsCount}`;
+  turnsFieldCount.innerText = `👆 ${turnsCount}`;
 }
 
 export function createTurnsCounter() {
-  const turnsFieldCounter = createElem('p', 'menu-field__turns-counter menu-counter', `Turns: ${turnsCount}`);
+  const turnsFieldCounter = createElem('p', 'menu-field__turns-counter menu-counter', `👆 ${turnsCount}`);
 
   const mainField = document.querySelector('.main-field');
   mainField.addEventListener('click', (event) => {

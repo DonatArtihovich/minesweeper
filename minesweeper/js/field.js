@@ -56,7 +56,7 @@ export function changeBombCount(value) {
 
   currentBombCount = value;
   const bombCountElement = document.querySelector('.menu-field__bomb-counter');
-  bombCountElement.textContent = `Bombs: ${currentBombCount}`;
+  bombCountElement.textContent = `💣 ${currentBombCount}`;
 }
 
 export function changeSizes() {

@@ -88,5 +88,5 @@ function checkFirstTurnBomb() {
 export function changeFlagCount(value) {
   flagCount = value;
   const flagCountElement = document.querySelector('.menu-field__flag-counter');
-  flagCountElement.textContent = `Flags: ${flagCount}`;
+  flagCountElement.textContent = `🚩 ${flagCount}`;
 }

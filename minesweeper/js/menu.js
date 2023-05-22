@@ -34,7 +34,7 @@ export default function createMenu() {
 
   const countTogglerWrapper = createElem('div', 'bombs-toggler__wrapper toggler__wrapper');
   const countToggler = createBombCountToggler();
-  const countTogglerHeader = createElem('span', 'menu-counter bombs-toggler__header toggler__header', 'Bombs: ');
+  const countTogglerHeader = createElem('span', 'menu-counter bombs-toggler__header toggler__header', '💣 ');
   countTogglerWrapper.append(countTogglerHeader, countToggler);
 
   const scoreButton = createElem('button', 'menu-field__score-button menu-field__button menu-field__bottom-button', 'Score');

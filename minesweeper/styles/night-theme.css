@@ -89,22 +89,23 @@ body.night-theme {
 }
 
 .night-theme .game-modal__header-wrapper {
-    border: 3px solid var(--night-main-border);
+    border: 3px solid var(--night-modal-button-background);
     background: var(--night-modal-header-background);
 }
 
 .night-theme .game-modal__header {
-    color: var(--night-header-color);
+    color: var(--night-menu-text-color);
 }
 
 .night-theme .game-modal__button {
-    background-color: var(--night-modal-button-background);
-    border: 3px solid var(--night-main-border);
-    color: var(--modal-button-text-color);
+    background-color: var(--night-main-border);
+    border: 3px solid var(--night-modal-button-background);
+    color: var(--night-modal-button-background);
 }
 
 .night-theme .game-modal__button:hover {
-    background-color: var(--night-main-border);
+    background-color: var(--night-modal-button-background);
+    color: var(--night-header-color)
 }
 
 .night-theme .game-modal__button:active {
@@ -124,17 +125,17 @@ body.night-theme {
 
 .night-theme .menu-field__header-wrapper {
     background: var(--night-modal-header-background);
-    border: 5px solid var(--night-main-border);
+    border: 3px solid var(--night-menu-text-color);
 }
 
 .night-theme .menu-field__header {
-    color: var(--night-header-color);
+    color: var(--night-menu-text-color);
 }
 
 .night-theme .menu-field__button {
-    background-color: var(--night-header-color);
-    border: 3px solid var(--night-main-border);
-    color: var(--night-main-border);
+    background-color: var(--night-main-border);
+    border: 3px solid var(--night-menu-text-color);
+    color: var(--night-menu-text-color);
 }
 
 .night-theme .menu-field__button:hover {
@@ -147,11 +148,11 @@ body.night-theme {
 }
 
 .night-theme .menu-field__sound-button:hover {
-    background-color: var(--night-header-color);
+    background-color: var(--night-main-border);
 }
 
 .night-theme .menu-field__sound-button:active {
-    background-color: var(--night-header-color);
+    background-color: var(--night-main-border);
     color: var(--night-main-border);
 }
 
@@ -175,15 +176,15 @@ body.night-theme {
 }
 
 .night-theme .toggler {
-    background-color: var(--night-header-color);
-    border: 3px solid var(--night-main-border);
-    color: var(--night-main-border);
+    background-color: var(--night-main-border);
+    border: 3px solid var(--night-menu-text-color);
+    color: var(--night-menu-text-color);
 }
 
 .night-theme .game-modal__close-button {
     background-color: var(--night-main-border);
-    border: 3px solid var(--night-secondary-border);
-    color: var(--night-secondary-border);
+    border: 3px solid var(--night-menu-text-color);
+    color: var(--night-menu-text-color);
 }
 
 .night-theme .game-modal__close-button:hover {
@@ -193,8 +194,8 @@ body.night-theme {
 }
 
 .night-theme .score-table {
-    background-color: var(--night-header-color);
-    border: 3px solid var(--night-main-border);
+    background-color: var(--night-main-border);
+    border: 3px solid var(--night-menu-text-color);
 }
 
 .night-theme .score-table__row {
@@ -202,11 +203,11 @@ body.night-theme {
 }
 
 .night-theme .score-table__header-cell {
-    color: var(--night-main-border);
+    color: var(--night-menu-text-color);
 }
 
 .night-theme .score-table__cell {
-    color: var(--night-main-border);
+    color: var(--night-menu-text-color);
 }
 
 .night-theme .theme-toggler-button {
