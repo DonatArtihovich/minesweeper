@@ -18,8 +18,8 @@ function addBombs(bombsCount, w, h) {
   let count = bombsCount;
 
   while (count) {
-    const x = generateRandom(0, w - 1);
-    const y = generateRandom(0, h - 1);
+    const x = generateRandom(0, w);
+    const y = generateRandom(0, h);
     const curElem = gameMatrix[y][x];
 
     if (!curElem) {
