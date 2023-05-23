@@ -1,6 +1,6 @@
 import { gameMatrix } from './matrix';
 import { getCellData, getCellNeighbors } from './cell-data';
-import { checkStatus, endGame } from './status';
+import { checkStatus, endGame, isGameOver } from './status';
 import { createField, currentBombCount, changeBombCount } from './field';
 
 import { playSound } from './sound';
@@ -8,6 +8,7 @@ import { playSound } from './sound';
 export let flagCount = 0;
 
 export function openCell(cell) {
+  if (isGameOver) return
   const cellData = getCellData(cell);
 
   if (cellData.hasFlag) {

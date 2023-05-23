@@ -7,7 +7,7 @@ import { currentDifficulty } from './resize';
 import { bombCount } from './field';
 import setScore from './score';
 
-let isGameOver = false;
+export let isGameOver = false;
 
 export function changeGameOverStatus(b) {
   isGameOver = b;
